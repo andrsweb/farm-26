@@ -1,0 +1,8 @@
+@use '../../../vars/vars.scss' as v;
+
+%button {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background: v.$white;
+}

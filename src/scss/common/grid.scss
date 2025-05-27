@@ -1,0 +1,14 @@
+@use '../vars/vars' as v;
+
+.container {
+	width: 100%;
+	max-width: v.$max-width;
+	padding: 0 v.$container-padding;
+	margin: 0 auto;
+
+	&-fluid {
+		width: 100%;
+		max-width: 100%;
+		padding: 0 v.$container-padding
+	}
+}

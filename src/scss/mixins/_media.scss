@@ -1,0 +1,21 @@
+@use 'sass:map';
+@use '../vars/vars.scss' as v;
+
+$breakpoints: (
+	xs: v.$xs,
+	sm: v.$sm,
+	md: v.$md,
+	lg: v.$lg,
+	xl: v.$xl,
+	xxl: v.$xxl
+);
+
+@mixin media($breakpoint) {
+	@if map.has-key($breakpoints, $breakpoint) {
+		@media (min-width: map.get($breakpoints, $breakpoint)) {
+			@content
+		}
+	} @else {
+		@warn "Breakpoint `#{$breakpoint}` not found in \$breakpoints map."
+	}
+}

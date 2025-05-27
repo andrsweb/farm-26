@@ -1,0 +1,82 @@
+@use '../vars/vars' as v;
+@use '../mixins/mixins' as m;
+@use '../utils/placeholders/placeholders' as *;
+
+
+h1,
+.h1,
+h2,
+.h2,
+h3,
+.h3,
+h4,
+.h4,
+h5,
+.h5,
+h6,
+.h6 {
+	@extend %title
+}
+
+h1, .h1 {
+	font-size: 28px;
+	font-style: normal;
+	line-height: normal;
+
+	@include m.media(md) {
+		font-size: 48px
+	}
+}
+
+h2,
+.h2 {
+	font-size: 28px;
+
+	@include m.media(md) {
+		font-size: 32px;
+	}
+}
+
+h3,
+.h3 {
+	font-size: 30px
+}
+
+h4,
+.h4 {
+	font-size: v.$fs-xl;
+
+	@include m.media(lg) {
+		font-size: 24px
+	}
+}
+
+h5,
+.h5 {
+	font-size: v.$fs-xl
+}
+
+h6,
+.h6 {
+	font-size: v.$fs-lg
+}
+
+a {
+	display: inline-block;
+	text-decoration: none;
+	transition: opacity ease v.$tr;
+
+	&:hover {
+		opacity: v.$op;
+	}
+}
+
+p {
+	margin: 0;
+	padding: 0;
+}
+
+b,
+strong {
+	font-weight: v.$fw-bold
+}

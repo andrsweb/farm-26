@@ -1,0 +1,9 @@
+@use '../../../scss/vars/vars' as v;
+
+.header {
+	padding: 20px 0;
+
+	&-wrapper {
+		display: flex;
+	}
+}
