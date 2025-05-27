@@ -8,8 +8,27 @@
 	left: 0;
 	top: 0;
 	background-color: v.$light;
-	
 	box-shadow: v.$bs-main;
+
+	&.opened {
+		.hidden-menu {
+			display: flex;
+		}
+
+		.burger-button span {
+			transform: rotate(45deg);
+
+			&::before {
+				opacity: 0;
+			}
+
+			&::after {
+				top: 0;
+				left: 0;
+				transform: rotate(-90deg);
+			}
+		}
+	}
 
 	.container {
 		max-width: v.$max;
@@ -119,6 +138,7 @@
 					border-radius: v.$br9;
 					background-color: v.$dark-blue;
 					position: relative;
+					transition: transform ease v.$tr;
 
 					&::before,
 					&::after {
@@ -129,6 +149,7 @@
 						height: 2px;
 						background-color: v.$dark-blue;
 						border-radius: v.$br9;
+						transition: transform ease v.$tr, opacity ease v.$tr;
 					}
 
 					&::before {
@@ -146,7 +167,7 @@
 	.hidden-menu {
 		width: 100%;
 		height: calc(100dvh - 126.5px);
-		display: flex;
+		display: none;
 		align-items: flex-start;
 
 		&-area {
