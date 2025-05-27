@@ -73,7 +73,7 @@
 			color: v.$dark-blue;
 			@include m.text15r;
 
-			@include m.media(xxl) {
+			@include m.media(md) {
 				display: block;
 			}
 		}
@@ -82,10 +82,6 @@
 			display: flex;
 			align-items: center;
 			gap: 10px;
-
-			@include m.media(lg) {
-				gap: 28px;
-			}
 
 			a {
 				width: 40px;
