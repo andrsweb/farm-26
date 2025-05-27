@@ -1,0 +1,17 @@
+@use '../vars/vars.scss' as v;
+@use '../utils/placeholders/text/text-types';
+
+@mixin text15r() {
+	font-size: 15px;
+	font-weight: v.$fw-regular;
+	letter-spacing: -0.15px;
+	@extend %default-text;
+}
+
+@mixin text16m() {
+	color: v.$black;
+	font-size: v.$fs-md;
+	font-weight: v.$fw-medium;
+	letter-spacing: -0.16px;
+	@extend %default-text;
+}

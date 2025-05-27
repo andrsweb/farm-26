@@ -1,8 +1,5 @@
-@use '../../../vars/vars.scss' as v;
+@forward './naked-button';
 
 %button {
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	background: v.$white;
+	@extend %naked-button;
 }

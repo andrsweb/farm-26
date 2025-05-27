@@ -1,0 +1,7 @@
+@use '../../../vars/vars.scss' as t;
+
+%default-text {
+	font-family: t.$ff;
+	font-style: normal;
+	line-height: normal;
+}

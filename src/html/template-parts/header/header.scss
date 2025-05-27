@@ -1,9 +1,143 @@
 @use '../../../scss/vars/vars' as v;
+@use '../../../scss/mixins/mixins' as m;
+@use '../../../scss/utils/placeholders/buttons/naked-button';
 
 .header {
-	padding: 20px 0;
+	padding: 8px 0;
+	width: 100vw;
+	position: fixed;
+	left: 0;
+	top: 0;
+	background-color: v.$light;
+	box-shadow: v.$bs-main;
+
+	.container {
+		max-width: v.$max;
+	}
 
 	&-wrapper {
 		display: flex;
+		align-items: center;
+		justify-content: space-between;
+	}
+
+	&-left {
+		display: flex;
+		align-items: center;
+		gap: 10px;
+
+		.header-logo {
+			img {
+				width: auto;
+				height: 104px;
+			}
+		}
+
+		.header-number {
+			@include m.text16m();
+		}
+	}
+
+	&-right {
+		display: flex;
+		align-items: center;
+		gap: 28px;
+
+		p {
+			display: none;
+			color: v.$dark-blue;
+			@include m.text15r;
+
+			@include m.media(xxl) {
+				display: block;
+			}
+		}
+
+		&-actions {
+			display: flex;
+			align-items: center;
+			gap: 28px;
+
+			a {
+				width: 18px;
+				height: 18px;
+
+				img {
+					width: 100%;
+					height: 100%;
+					aspect-ratio: 1;
+				}
+			}
+
+			.busket {
+				@extend %naked-button;
+
+				&-wrapper {
+					display: flex;
+					align-items: center;
+					justify-content: center;
+					position: relative;
+
+					img {
+						width: 24px;
+						height: 24px;
+						aspect-ratio: 1;
+					}
+				}
+
+				&-count {
+					display: flex;
+					justify-content: center;
+					align-items: center;
+					min-width: 16px;
+					padding: 3px;
+					aspect-ratio: 16/19;
+					border-radius: v.$br9;
+					position: absolute;
+					right: -3px;
+					top: -10px;
+					background-color: v.$neon-green;
+					text-align: center;
+					font-size: 10px;
+					font-weight: v.$fw-regular;
+					letter-spacing: -0.1px;
+					z-index: 1;
+
+					@extend %default-text;
+				}
+			}
+
+			.burger-button {
+				width: 21px;
+				height: 18px;
+				@extend %naked-button;
+
+				span {
+					width: 100%;
+					height: 2px;
+					border-radius: v.$br9;
+					background-color: v.$dark-blue;
+					position: relative;
+
+					&::before, &::after {
+						content: '';
+						position: absolute;
+						left: 0;
+						width: 100%;
+						height: 2px;
+						background-color: v.$dark-blue;
+						border-radius: v.$br9;
+					}
+
+					&::before {
+						top: 8px;
+					}
+
+					&::after {
+						top: -8px;
+					}
+				}
+			}
+		}
 	}
 }

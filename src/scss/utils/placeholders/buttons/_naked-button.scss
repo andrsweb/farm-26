@@ -1,0 +1,17 @@
+@use '../../../vars/vars.scss' as v;
+
+%naked-button {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background: transparent;
+	padding: 0;
+	border: 0;
+	outline: 0;
+	cursor: pointer;
+	transition: all ease v.$tr;
+
+	&:active {
+		transform: translateY(2px);
+	}
+}

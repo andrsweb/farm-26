@@ -7,7 +7,10 @@ $breakpoints: (
 	md: v.$md,
 	lg: v.$lg,
 	xl: v.$xl,
-	xxl: v.$xxl
+	xxl: v.$xxl,
+	xxxl: v.$xxxl,
+	big: v.$big,
+	max: v.$max,
 );
 
 @mixin media($breakpoint) {
