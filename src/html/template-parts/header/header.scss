@@ -165,28 +165,19 @@
 	}
 
 	.hidden-menu {
+		position: fixed;
+		top: 126.5px;
+		right: 0;
 		width: 100%;
 		height: calc(100dvh - 126.5px);
+		background-color: v.$light;
+		max-width: 267px;
 		display: none;
 		align-items: flex-start;
+		z-index: 99;
 
-		&-area {
-			width: calc(100% - 279px);
-			height: 100%;
-			height: 100%;
-			background-color: v.$gray-op;
-			overflow: visible;
-			position: relative;
-
-			&::before {
-				content: '';
-				position: absolute;
-				left: 0;
-				top: -1px;
-				width: 100%;
-				height: 2px;
-				box-shadow: v.$bs-main;
-			}
+		@include m.media(xl) {
+			max-width: 279px;
 		}
 
 		aside {
@@ -194,8 +185,6 @@
 			flex-direction: column;
 			width: 100%;
 			height: 100%;
-			max-width: 279px;
-			background-color: v.$light;
 		}
 
 		nav {
@@ -221,17 +210,24 @@
 						&.socials-container {
 							display: flex;
 							align-items: center;
+							flex-wrap: wrap;
 							gap: 16px;
-							margin-bottom: 31px;
+
+							@include m.media(xl) {
+								margin-bottom: 31px;
+							}
 
 							.menu-item {
 								a {
-									width: 18px;
-									height: 18px;
+									width: 40px;
+									height: 40px;
+									display: flex;
+									justify-content: center;
+									align-items: center;
 
 									img {
-										width: 100%;
-										height: 100%;
+										width: 18px;
+										height: 18px;
 										aspect-ratio: 1;
 									}
 								}
