@@ -54,7 +54,12 @@
 		}
 
 		.header-number {
+			display: none;
 			@include m.text16m();
+
+			@include m.media(md) {
+				display: flex;
+			}
 		}
 	}
 
@@ -76,15 +81,22 @@
 		&-actions {
 			display: flex;
 			align-items: center;
-			gap: 28px;
+			gap: 10px;
+
+			@include m.media(lg) {
+				gap: 28px;
+			}
 
 			a {
-				width: 18px;
-				height: 18px;
+				width: 40px;
+				height: 40px;
+				display: flex;
+				justify-content: center;
+				align-items: center;
 
 				img {
-					width: 100%;
-					height: 100%;
+					width: 18px;
+					height: 18px;
 					aspect-ratio: 1;
 				}
 			}
@@ -96,6 +108,8 @@
 					display: flex;
 					align-items: center;
 					justify-content: center;
+					width: 40px;
+					height: 40px;
 					position: relative;
 
 					img {
@@ -114,8 +128,8 @@
 					aspect-ratio: 16/19;
 					border-radius: v.$br9;
 					position: absolute;
-					right: -3px;
-					top: -10px;
+					right: 2px;
+					top: -3px;
 					background-color: v.$neon-green;
 					text-align: center;
 					font-size: 10px;
@@ -128,9 +142,20 @@
 			}
 
 			.burger-button {
-				width: 21px;
-				height: 18px;
+				width: 40px;
+				height: 40px;
+				display: flex;
+				justify-content: center;
+				align-items: center;
 				@extend %naked-button;
+
+				&-inner {
+					width: 21px;
+					height: 18px;
+					display: flex;
+					justify-content: center;
+					align-items: center;
+				}
 
 				span {
 					width: 100%;

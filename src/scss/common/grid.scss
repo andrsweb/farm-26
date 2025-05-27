@@ -1,14 +1,30 @@
 @use '../vars/vars' as v;
+@use '../mixins/media' as m;
+
+// Container vars.
+$container-paddingSm : 17.5px;
+$container-paddingXl : 20px;
+$container-width : 1298px;
+$max-widthSm : $container-width + ($container-paddingSm * 2);
+$max-widthXl : $container-width + ($container-paddingXl * 2);
 
 .container {
 	width: 100%;
-	max-width: v.$max-width;
-	padding: 0 v.$container-padding;
+	max-width: $max-widthSm;
+	padding: 0 $container-paddingSm;
 	margin: 0 auto;
+
+	@include m.media(xl) {
+		max-width: $max-widthXl;
+	}
 
 	&-fluid {
 		width: 100%;
 		max-width: 100%;
-		padding: 0 v.$container-padding
+		padding: 0 $container-paddingSm;
+
+		@include m.media(xl) {
+			padding: 0 $container-paddingXl;
+		}
 	}
 }
