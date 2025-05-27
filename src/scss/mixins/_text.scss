@@ -8,10 +8,28 @@
 	@extend %default-text;
 }
 
+@mixin text13m() {
+	font-size: 13px;
+	font-weight: v.$fw-medium;
+	letter-spacing: -0.13px;
+	@extend %default-text;
+
+	& {
+		line-height: 96.155%;
+	}
+}
+
 @mixin text16m() {
 	color: v.$black;
 	font-size: v.$fs-md;
 	font-weight: v.$fw-medium;
 	letter-spacing: -0.16px;
+	@extend %default-text;
+}
+
+@mixin text20m() {
+	font-size: v.$fs-xl;
+	font-weight: v.$fw-medium;
+	letter-spacing: -0.2px;
 	@extend %default-text;
 }
