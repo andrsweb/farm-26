@@ -1,0 +1,85 @@
+@use '../../../../../scss/vars/vars' as v;
+@use '../../../../../scss/mixins/media' as m;
+
+.modal-wrapper {
+	.modal {
+		&.empty-basket-modal {
+			width: 100%;
+			max-width: 383px;
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			background-color: v.$light;
+			position: relative;
+			padding: 14px 10px;
+
+			.close {
+				position: absolute;
+				top: 0px;
+				right: 0px;
+				width: 40px;
+				height: 40px;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				aspect-ratio: 1;
+
+				img {
+					width: 11px;
+					height: 11px;
+				}
+			}
+
+			.empty-basket-top {
+				width: 100%;
+				display: flex;
+				align-items: center;
+				justify-content: flex-start;
+				margin-bottom: 28px;
+
+				@include m.media(xl) {
+					margin-bottom: 22px;
+				}
+
+				p {
+					text-align: center;
+					font-size: 11px;
+					letter-spacing: -0.11px;
+					color: v.$dark-blue;
+					font-family: v.$ff;
+					font-weight: v.$fw-regular;
+
+					@include m.media(xl) {
+						text-align: left;
+						font-size: 13px;
+						letter-spacing: -0.13px;
+					}
+				}
+			}
+
+			.empty-basket-bottom {
+				width: 100%;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+
+				span {
+					width: 100%;
+					max-width: 260px;
+					display: flex;
+					justify-content: center;
+					align-items: center;
+					padding: 10px 17px;
+					background-color: v.$dark-blue;
+					color: v.$light;
+					font-family: v.$ff;
+					font-size: 13px;
+					font-weight: v.$fw-regular;
+					line-height: normal;
+					letter-spacing: -0.13px;
+					border-radius: v.$br5;
+				}
+			}
+		}
+	}
+}

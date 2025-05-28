@@ -1,5 +1,5 @@
 @use 'sass:map';
-@use '../vars/vars.scss' as v;
+@use 'vars/vars' as v;
 
 $breakpoints: (
 	xs: v.$xs,

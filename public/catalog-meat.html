@@ -34,7 +34,7 @@
 							<a href="tel:89682607272" title="Позвонить">
 								<img src="/img/phone.svg" width="18" height="18" alt="Векторная темно-синяя иконка трубки телефона">
 							</a>
-							<button class="busket">
+							<button class="busket open-basket">
 								<div class="busket-wrapper">
 									<span class="busket-count">0</span>
 									<img src="/img/busket.svg" width="24" height="24" alt="Векторная темно-синяя корзина">
@@ -144,7 +144,7 @@
 		</header>
 
 <main>
-	<div class="category">
+	<section class="category">
 	<div class="category-wrapper">
 		<aside class="category-aside">
 			<div class="category-aside-inner" data-simplebar>
@@ -476,7 +476,24 @@
 			</div>
 		</div>
 	</div>
+	<div class="modal-wrapper basket-modal-wrapper" id="empty-basket-modal-wrapper">
+	<div class="modal empty-basket-modal">
+		<button class="close">
+			<img src="/img/close.svg" title="Закрыть" alt="">
+		</button>
+		<div class="modal-inner">
+			<div class="empty-basket-top">
+				<p>Приём заказов с 9:00 до 19:30</p>
+			</div>
+			<div class="empty-basket-bottom">
+				<span class="empty">
+					ВАША КОРЗИНА ПУСТА
+				</span>
+			</div>
+		</div>
+	</div>
 </div>
+</section>
 </main>
 
 <footer class="footer">

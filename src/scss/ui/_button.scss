@@ -1,6 +1,6 @@
-@use '../../vars/vars' as v;
-@use '../../mixins/media' as m;
-@use '../../utils/placeholders/naked-button' as *;
+@use 'vars/vars' as v;
+@use 'mixins/media' as m;
+@use 'utils/placeholders/naked-button' as *;
 
 .button {
 	font-family: v.$ff;

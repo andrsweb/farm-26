@@ -1,5 +1,5 @@
-@use '../vars/vars' as v;
-@use '../utils/placeholders/naked-button' as *;
+@use 'vars/vars' as v;
+@use 'utils/placeholders/naked-button' as *;
 
 * {
 	outline: none;

@@ -1,0 +1,41 @@
+@use 'vars/vars' as v;
+.modal-wrapper {
+	position: fixed;
+	left: 0;
+	top: 0;
+	width: 100vw;
+	height: 100vh;
+	padding: 20px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background: rgba(58, 58, 58, 0.50);
+	backdrop-filter: blur(5px);
+	opacity: 0;
+	visibility: hidden;
+	z-index: 99;
+	transition: backdrop-filter ease v.$tr, opacity ease v.$tr, visibility ease v.$tr;
+
+	.modal {
+		margin: auto 0;
+		border-radius: v.$br15;
+		transform: translateY(100%);
+		opacity: 0;
+		transition: transform ease v.$tr, opacity ease v.$tr;
+
+		&-inner {
+			width: 100%;
+		}
+	}
+
+	&.opened {
+		visibility: visible;
+		opacity: 1;
+		backdrop-filter: blur(0);
+
+		.modal {
+			opacity: 1;
+			transform: translateY(0);
+		}
+	}
+}
