@@ -3,7 +3,18 @@
 @use '../utils/placeholders/placeholders' as *;
 
 
-h1,.h1,h2,.h2,h3,.h3,h4,.h4,h5,.h5,h6,.h6 {
+h1,
+.h1,
+h2,
+.h2,
+h3,
+.h3,
+h4,
+.h4,
+h5,
+.h5,
+h6,
+.h6 {
 	font-family: v.$ff;
 	font-style: normal;
 	font-weight: v.$fw-medium;
@@ -13,17 +24,26 @@ h1,.h1,h2,.h2,h3,.h3,h4,.h4,h5,.h5,h6,.h6 {
 	text-transform: uppercase;
 }
 
-h1, .h1 {
+h1,
+.h1 {
 	color: v.$dark-blue;
 	margin-bottom: 10px;
-	@include m.title48m;
+	font-size: 48px;
+	letter-spacing: -0.48px;
+	text-align: center;
+	font-family: v.$ff;
+	font-weight: v.$fw-medium;
+	text-transform: uppercase;
 
 	@include m.media(xl) {
-		@include m.title64m;
+		font-size: 64px;
+		letter-spacing: -0.64px;
+		text-align: left;
 	}
 }
 
-h2,.h2 {
+h2,
+.h2 {
 	font-size: 28px;
 
 	@include m.media(xl) {
@@ -31,11 +51,13 @@ h2,.h2 {
 	}
 }
 
-h3,.h3 {
+h3,
+.h3 {
 	font-size: 30px
 }
 
-h4,.h4 {
+h4,
+.h4 {
 	font-size: v.$fs-xl;
 	text-transform: none;
 
@@ -44,11 +66,13 @@ h4,.h4 {
 	}
 }
 
-h5,.h5 {
+h5,
+.h5 {
 	font-size: v.$fs-xl
 }
 
-h6,.h6 {
+h6,
+.h6 {
 	font-size: v.$fs-lg
 }
 

@@ -1,8 +1,6 @@
 @use '../../../../../scss/vars/vars' as v;
 @use '../../../../../scss/mixins/other' as o;
 @use '../../../../../scss/mixins/media' as m;
-@use '../../../../../scss/mixins/text' as t;
-@use '../../../../../scss/utils/placeholders/text/text-types' as *;
 
 .category {
 	width: 100%;
@@ -67,7 +65,10 @@
 			h2 {
 				display: none;
 				margin-bottom: 20px;
-				@include t.other20m();
+				font-size: v.$fs-xl;
+				font-weight: v.$fw-medium;
+				letter-spacing: -0.2px;
+				font-family: v.$ff;
 
 				@include m.media(xl) {
 					display: block;
@@ -103,7 +104,9 @@
 			background: linear-gradient(0deg, rgba(101, 101, 101, 0.20) 0%, rgba(101, 101, 101, 0.20) 100%), rgba(255, 255, 255, 0.70);
 			transition: color ease v.$tr;
 			white-space: nowrap;
-			@include t.btn16r();
+			font-size: v.$fs-md;
+			font-weight: v.$fw-regular;
+			letter-spacing: -0.16px;
 
 			@include m.media(xl) {
 				padding: 5px 10px;

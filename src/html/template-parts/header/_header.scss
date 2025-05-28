@@ -1,6 +1,6 @@
 @use '../../../scss/vars/vars' as v;
 @use '../../../scss/mixins/mixins' as m;
-@use '../../../scss/utils/placeholders/buttons/naked-button' as *;
+@use '../../../scss/utils/placeholders/naked-button' as *;
 
 .header {
 	width: 100vw;
@@ -56,7 +56,11 @@
 
 		.header-number {
 			display: none;
-			@include m.text16m();
+			color: v.$black;
+			font-size: v.$fs-md;
+			font-weight: v.$fw-medium;
+			letter-spacing: -0.16px;
+			font-family: v.$ff;
 
 			@include m.media(md) {
 				display: flex;
@@ -72,7 +76,12 @@
 		p {
 			display: none;
 			color: v.$dark-blue;
-			@include m.text15r;
+			font-size: 15px;
+			font-weight: v.$fw-regular;
+			letter-spacing: -0.15px;
+			font-family: v.$ff;
+			font-style: normal;
+			line-height: normal;
 
 			@include m.media(md) {
 				display: block;
@@ -131,8 +140,9 @@
 					font-weight: v.$fw-regular;
 					letter-spacing: -0.1px;
 					z-index: 1;
-
-					@extend %default-text;
+					font-family: v.$ff;
+					font-style: normal;
+					line-height: normal;
 				}
 			}
 
@@ -223,7 +233,10 @@
 							color: v.$dark-blue;
 							text-transform: uppercase;
 							padding: 20px 10px 10px 20px;
-							@include m.text20m;
+							font-size: v.$fs-xl;
+							font-weight: v.$fw-medium;
+							letter-spacing: -0.2px;
+							font-family: v.$ff;
 						}
 
 						&.socials-container {
@@ -277,7 +290,11 @@
 
 						a {
 							color: v.$dark-blue;
-							@include m.text13m;
+							font-size: 13px;
+							font-weight: v.$fw-medium;
+							letter-spacing: -0.13px;
+							font-family: v.$ff;
+							line-height: 96.155%;
 						}
 					}
 				}
