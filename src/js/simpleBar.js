@@ -11,7 +11,7 @@ const initSimpleBar = () => {
 	scrollableElements.forEach(element => {
 		new SimpleBar(element, {
 			autoHide: false,
-			scrollbarMinSize: 10
+			scrollbarMinSize: 8
 		})
 	})
 }

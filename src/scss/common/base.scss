@@ -1,4 +1,5 @@
 @use '../vars/vars' as v;
+@use '../utils/placeholders/buttons/naked-button' as *;
 
 * {
 	outline: none;
@@ -41,15 +42,18 @@ ul {
 	list-style: none
 }
 
+button {
+	@extend %naked-button;
+}
 
 .wrapper {
 	position: relative;
 	display: flex;
 	flex-direction: column;
 	width: 100%;
-	min-height: 100vh;
+	min-height: calc(100dvh - 124px);
 	overflow: hidden;
-	margin-top: 126.5px;
+	margin-top: 124px;
 
 	.footer {
 		margin-top: auto

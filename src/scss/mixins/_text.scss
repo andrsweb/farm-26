@@ -45,11 +45,37 @@
 	font-size: 48px;
 	letter-spacing: -0.48px;
 	text-align: center;
-	@extend %title;
+	font-family: v.$ff;
+	font-style: normal;
+	font-weight: v.$fw-medium;
+	line-height: normal;
+	text-transform: uppercase;
 }
 
 @mixin title64m() {
 	font-size: 64px;
 	letter-spacing: -0.64px;
 	text-align: left;
+}
+
+@mixin btn15r() {
+	font-size: 15px;
+	font-weight: v.$fw-regular;
+	letter-spacing: -0.15px;
+}
+
+@mixin btn16r() {
+	font-size: v.$fs-md;
+	font-weight: v.$fw-regular;
+	letter-spacing: -0.16px;
+}
+
+@mixin other20m() {
+	font-size: v.$fs-xl;
+	letter-spacing: -0.2px;
+	font-family: v.$ff;
+	font-style: normal;
+	font-weight: v.$fw-medium;
+	line-height: normal;
+	text-transform: uppercase;
 }

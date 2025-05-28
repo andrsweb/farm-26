@@ -1,0 +1,213 @@
+@use '../../../../../scss/vars/vars' as v;
+@use '../../../../../scss/mixins/other' as o;
+@use '../../../../../scss/mixins/media' as m;
+@use '../../../../../scss/mixins/text' as t;
+@use '../../../../../scss/utils/placeholders/text/text-types' as *;
+
+.category {
+	width: 100%;
+
+	&-wrapper {
+		width: 100%;
+		height: 100%;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+
+		@include m.media(xl) {
+			flex-direction: row;
+			justify-content: space-between;
+			align-items: flex-start;
+		}
+
+		h1 {
+			font-size: 24px;
+			letter-spacing: -0.24px;
+			text-align: left;
+
+			@include m.media(xl) {
+				font-size: 64px;
+				letter-spacing: -0.64px;
+			}
+		}
+	}
+
+	&-aside {
+		display: flex;
+		flex-direction: column;
+		align-items: flex-start;
+		gap: 32px;
+		width: 100%;
+		background-color: v.$light;
+		border-radius: v.$br8;
+
+		@include m.media(xl) {
+			position: fixed;
+			left: 0;
+			top: 124px;
+			max-width: 257px;
+			box-shadow: none;
+			height: calc(100dvh - 124px);
+		}
+
+		&-inner {
+			display: flex;
+			flex-direction: column;
+			width: 100%;
+			box-shadow: v.$bs-main;
+
+			@include m.media(xl) {
+				padding: 10px 10px 10px 13px;
+				height: 100%;
+				overflow-y: auto;
+				margin-bottom: auto;
+				box-shadow: none;
+			}
+
+			h2 {
+				display: none;
+				margin-bottom: 20px;
+				@include t.other20m();
+
+				@include m.media(xl) {
+					display: block;
+				}
+			}
+		}
+
+		&-links {
+			display: flex;
+			flex-direction: row;
+			align-items: center;
+			gap: 8px;
+			padding: 10px 20px;
+			overflow-x: auto;
+			background-color: v.$light;
+			@include o.hiddenScroll();
+
+			@include m.media(xl) {
+				flex-direction: column;
+				align-items: flex-start;
+				padding: 0 0 10px 0;
+				background-color: transparent;
+			}
+		}
+
+		&-link {
+			width: 100%;
+			color: v.$dark-blue;
+			font-weight: v.$fw-regular;
+			padding: 4px 15px;
+			box-shadow: v.$bs-type1;
+			border-radius: v.$br5;
+			background: linear-gradient(0deg, rgba(101, 101, 101, 0.20) 0%, rgba(101, 101, 101, 0.20) 100%), rgba(255, 255, 255, 0.70);
+			transition: color ease v.$tr;
+			white-space: nowrap;
+			@include t.btn16r();
+
+			@include m.media(xl) {
+				padding: 5px 10px;
+				white-space: wrap;
+				background: transparent;
+				background-color: v.$white70;
+			}
+
+			&.active {
+				color: v.$neon-green;
+				pointer-events: none;
+			}
+		}
+
+		&-footer {
+			width: 100%;
+			display: none;
+			align-items: center;
+			justify-content: flex-end;
+			flex-wrap: wrap;
+			gap: 10px;
+			padding: 0 8px;
+			margin-top: auto;
+
+			@include m.media(xl) {
+				display: flex;
+			}
+
+			a {
+				img {
+					width: 36px;
+					height: 36px;
+				}
+			}
+		}
+	}
+
+	&-content {
+		width: 100%;
+		height: 100%;
+		padding: 20px 20px 70px 20px;
+		background-color: v.$dark-gray;
+
+		@include m.media(xl) {
+			width: calc(100% - 257px);
+			margin-left: 257px;
+		}
+	}
+
+	&-filters {
+		width: 100%;
+		display: flex;
+		flex-wrap: wrap;
+		align-items: center;
+		justify-content: flex-start;
+		margin-bottom: 20px;
+		gap: 15px;
+
+		@include m.media(xl) {
+			gap: 20px;
+			margin-bottom: 15px;
+		}
+	}
+
+	&-filter {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		border-radius: v.$br8;
+		box-shadow: v.$bs-type1;
+		padding: 8px 16px;
+		font-family: v.$ff;
+		font-weight: v.$fw-medium;
+		background-color: v.$white70;
+		transition: color ease v.$tr;
+		font-size: 13px;
+		font-weight: v.$fw-regular;
+		letter-spacing: -0.13px;
+
+		&.active {
+			color: v.$neon-green;
+		}
+
+		@include m.media(xl) {
+			font-size: 15px;
+			letter-spacing: -0.15px;
+		}
+	}
+
+	&-cards {
+		width: 100%;
+
+		&-inner {
+			width: 100%;
+			display: flex;
+			flex-wrap: wrap;
+			align-items: center;
+			justify-content: center;
+			gap: 20px;
+
+			@include m.media(xl) {
+				gap: 30px;
+				justify-content: flex-start;
+			}
+		}
+	}
+}

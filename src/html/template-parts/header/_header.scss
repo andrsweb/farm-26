@@ -99,8 +99,6 @@
 			}
 
 			.busket {
-				@extend %naked-button;
-
 				&-wrapper {
 					display: flex;
 					align-items: center;
@@ -144,7 +142,6 @@
 				display: flex;
 				justify-content: center;
 				align-items: center;
-				@extend %naked-button;
 
 				&-inner {
 					width: 21px;
@@ -188,10 +185,10 @@
 
 	.hidden-menu {
 		position: fixed;
-		top: 126.5px;
+		top: 124px;
 		right: 0;
 		width: 100%;
-		height: calc(100dvh - 126.5px);
+		height: calc(100dvh - 124px);
 		background-color: v.$light;
 		max-width: 267px;
 		display: none;

@@ -1,0 +1,64 @@
+<div class="category">
+	<div class="category-wrapper">
+		<aside class="category-aside">
+			<div class="category-aside-inner" data-simplebar>
+				<h2>КАТАЛОГ</h2>
+				<div class="category-aside-links">
+					<a class="category-aside-link" href="#">Все</a>
+					<a class="category-aside-link active" href="#">Мясо свежее</a>
+					<a class="category-aside-link" href="#">Колбасные изделия</a>
+					<a class="category-aside-link" href="#">Овощи и фрукты</a>
+					<a class="category-aside-link" href="#">Полуфабрикаты</a>
+					<a class="category-aside-link" href="#">Сухофрукты, Орехи</a>
+					<a class="category-aside-link" href="#">Мёд</a>
+					<a class="category-aside-link" href="#">Урбеч</a>
+					<a class="category-aside-link" href="#">Приправы, Специи</a>
+					<a class="category-aside-link" href="#">Бакалея</a>
+					<a class="category-aside-link" href="#">Молочная продукция</a>
+					<a class="category-aside-link" href="#">Хлеб</a>
+					<a class="category-aside-link" href="#">Выпечка</a>
+					<a class="category-aside-link" href="#">Напитки</a>
+					<a class="category-aside-link" href="#">ПП десерты без сх/гл</a>
+				</div>
+			</div>
+			<div class="category-aside-footer">
+				<a href="/">
+					<img src="/img/logo-without-text.png" width="36" height="36" alt="Векторная корова на красно-зеленом фоне">
+				</a>
+			</div>
+		</aside>
+		<div class="category-content">
+			<div class="category-filters">
+				<button class="category-filter">Баранина</button>
+				<button class="category-filter active">Говядина</button>
+				<button class="category-filter">Индейка</button>
+				<button class="category-filter">Крольчатина</button>
+				<button class="category-filter">Курица</button>
+				<button class="category-filter">Утка</button>
+			</div>
+			<h1>МЯСО СВЕЖЕЕ</h1>
+			<div class="category-cards">
+				<div class="category-cards-inner">
+					@@loop('../../../components/cards/category-card/category-card.html', [
+						{'src': '/img/meat.jpg', 'title': 'Сочная говядина ', 'price': '500', 'weight': '0.55' },
+						{'src': '/img/meat.jpg', 'title': 'Сочная говядина ', 'price': '500', 'weight': '0.55' },
+						{'src': '/img/meat.jpg', 'title': 'Сочная говядина ', 'price': '500', 'weight': '0.55' },
+						{'src': '/img/meat.jpg', 'title': 'Сочная говядина ', 'price': '500', 'weight': '0.55' },
+						{'src': '/img/meat.jpg', 'title': 'Сочная говядина ', 'price': '500', 'weight': '0.55' },
+						{'src': '/img/meat.jpg', 'title': 'Сочная говядина ', 'price': '500', 'weight': '0.55' },
+						{'src': '/img/meat.jpg', 'title': 'Сочная говядина ', 'price': '500', 'weight': '0.55' },
+						{'src': '/img/meat.jpg', 'title': 'Сочная говядина ', 'price': '500', 'weight': '0.55' },
+						{'src': '/img/meat.jpg', 'title': 'Сочная говядина ', 'price': '500', 'weight': '0.55' },
+						{'src': '/img/meat.jpg', 'title': 'Сочная говядина ', 'price': '500', 'weight': '0.55' },
+						{'src': '/img/meat.jpg', 'title': 'Сочная говядина ', 'price': '500', 'weight': '0.55' },
+						{'src': '/img/meat.jpg', 'title': 'Сочная говядина ', 'price': '500', 'weight': '0.55' },
+						{'src': '/img/meat.jpg', 'title': 'Сочная говядина ', 'price': '500', 'weight': '0.55' },
+						{'src': '/img/meat.jpg', 'title': 'Сочная говядина ', 'price': '500', 'weight': '0.55' },
+						{'src': '/img/meat.jpg', 'title': 'Сочная говядина ', 'price': '500', 'weight': '0.55' }
+					])
+				</div>
+				<div class="pagination"></div>
+			</div>
+		</div>
+	</div>
+</div>
