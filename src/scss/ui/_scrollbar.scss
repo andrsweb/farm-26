@@ -1,0 +1,22 @@
+@use '../vars/vars' as v;
+
+.simplebar-scrollbar {
+	&::before {
+		background-color: v.$light-green;
+		border-radius: 4px;
+		border: 1px solid v.$black;
+	}
+
+	&.simplebar-visible {
+			&::before {
+				background-color: v.$neon-green;
+			}
+		}
+}
+
+.simplebar-track {
+	&.simplebar-vertical {
+		width: 10px;
+		background: transparent;
+	}
+}
