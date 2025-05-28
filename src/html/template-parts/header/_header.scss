@@ -1,6 +1,6 @@
 @use '../../../scss/vars/vars' as v;
 @use '../../../scss/mixins/mixins' as m;
-@use '../../../scss/utils/placeholders/buttons/naked-button';
+@use '../../../scss/utils/placeholders/buttons/naked-button' as *;
 
 .header {
 	width: 100vw;
@@ -9,6 +9,7 @@
 	top: 0;
 	background-color: v.$light;
 	box-shadow: v.$bs-main;
+	z-index: 100;
 
 	&.opened {
 		.hidden-menu {

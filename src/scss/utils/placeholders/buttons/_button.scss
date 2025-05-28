@@ -1,5 +1,33 @@
-@forward './naked-button';
+@use '../../../vars/vars' as v;
+@use '../../../mixins/text' as t;
+@use '../../../mixins/media' as m;
+@use '../../../utils/placeholders/buttons/naked-button' as *;
 
 %button {
 	@extend %naked-button;
+}
+
+%catalog-button {
+	width: 100%;
+	height: 34.5px;
+	color: v.$dark-blue;
+	text-align: center;
+	font-weight: v.$fw-regular;
+	letter-spacing: -0.15px;
+	border-radius: v.$br9;
+	text-transform: uppercase;
+	background: v.$bg35;
+	box-shadow: v.$bs-main;
+	overflow: hidden;
+	font-size: 12px;
+	padding: 4px;
+	font-weight: v.$fw-medium;
+	letter-spacing: -0.12px;
+
+	@include m.media(xl) {
+		height: 46px;
+		font-size: 15px;
+		letter-spacing: -0.15px;
+		border-radius: v.$br12;
+	}
 }

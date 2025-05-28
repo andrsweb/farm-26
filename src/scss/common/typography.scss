@@ -19,12 +19,12 @@ h6,
 }
 
 h1, .h1 {
-	font-size: 28px;
-	font-style: normal;
-	line-height: normal;
+	color: v.$dark-blue;
+	margin-bottom: 10px;
+	@include m.title48m;
 
-	@include m.media(md) {
-		font-size: 48px
+	@include m.media(xl) {
+		@include m.title64m;
 	}
 }
 
@@ -32,7 +32,7 @@ h2,
 .h2 {
 	font-size: 28px;
 
-	@include m.media(md) {
+	@include m.media(xl) {
 		font-size: 32px;
 	}
 }

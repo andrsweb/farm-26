@@ -1,5 +1,12 @@
 @use '../vars/vars.scss' as v;
-@use '../utils/placeholders/text/text-types';
+@use '../utils/placeholders/text/text-types' as *;
+
+@mixin text13r() {
+	font-size: 13px;
+	font-weight: v.$fw-regular;
+	letter-spacing: -0.13px;
+	@extend %default-text;
+}
 
 @mixin text15r() {
 	font-size: 15px;
@@ -32,4 +39,17 @@
 	font-weight: v.$fw-medium;
 	letter-spacing: -0.2px;
 	@extend %default-text;
+}
+
+@mixin title48m() {
+	font-size: 48px;
+	letter-spacing: -0.48px;
+	text-align: center;
+	@extend %title;
+}
+
+@mixin title64m() {
+	font-size: 64px;
+	letter-spacing: -0.64px;
+	text-align: left;
 }

@@ -1,0 +1,15 @@
+@use '../../../../../scss/vars/vars.scss' as v;
+
+.hero {
+	padding: 16px 0;
+
+	.catalog {
+		&-inner {
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			flex-wrap: wrap;
+			gap: 25px;
+		}
+	}
+}

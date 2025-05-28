@@ -15,7 +15,16 @@ $max-widthXl : $container-width + ($container-paddingXl * 2);
 	margin: 0 auto;
 
 	@include m.media(xl) {
+		padding: 0 $container-paddingXl;
 		max-width: $max-widthXl;
+	}
+
+	&.sm {
+		max-width: calc(1100px + ($container-paddingSm * 2));
+
+		@include m.media(xl) {
+			max-width: calc(1100px + ($container-paddingXl * 2));
+		}
 	}
 
 	&-fluid {

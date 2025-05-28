@@ -1,5 +1,26 @@
 <section class="hero">
-	<div class="container">
-		<h1>Welcome to hero</h1>
+	<div class="container sm">
+		<h1>Каталог</h1>
+		<div class="catalog">
+			<div class="catalog-inner">
+				@@loop('../../../components/cards/catalog-card/catalog-card.html', [
+					{'src': '/img/cat1.jpg', 'btn-text': 'МЯСО СВЕЖЕЕ'},
+					{'src': '/img/cat2.jpg', 'btn-text': 'ШАШЛЫК'},
+					{'src': '/img/cat3.jpg', 'btn-text': 'КОЛБАСНЫЕ ИЗДЕЛИЯ'},
+					{'src': '/img/cat4.jpg', 'btn-text': 'ОВОЩИ И ФРУКТЫ'},
+					{'src': '/img/cat5.jpg', 'btn-text': 'ПОЛУФАБРИКАТЫ'},
+					{'src': '/img/cat6.jpg', 'btn-text': 'СУХОФРУКТЫ, ОРЕХИ'},
+					{'src': '/img/cat7.jpg', 'btn-text': 'МЁД'},
+					{'src': '/img/cat8.jpg', 'btn-text': 'УРБЕЧ'},
+					{'src': '/img/cat9.jpg', 'btn-text': 'ПРИПРАВЫ, СПЕЦИИ'},
+					{'src': '/img/cat10.jpg', 'btn-text': 'БАКАЛЕЯ'},
+					{'src': '/img/cat11.jpg', 'btn-text': 'МОЛОЧНАЯ ПРОДУКЦИЯ'},
+					{'src': '/img/cat12.jpg', 'btn-text': 'ХЛЕБ'},
+					{'src': '/img/cat13.jpg', 'btn-text': 'ВЫПЕЧКА'},
+					{'src': '/img/cat14.jpg', 'btn-text': 'НАПИТКИ'},
+					{'src': '/img/cat15.jpg', 'btn-text': 'ПП ДЕСЕРТЫ БЕЗ САХАРА И ГЛЮТЕНА'}
+				])
+			</div>
+		</div>
 	</div>
 </section>

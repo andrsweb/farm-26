@@ -1,0 +1,10 @@
+@use '../../utils/placeholders/buttons/button' as *;
+@use '../../utils/placeholders/buttons/naked-button' as *;
+
+.button {
+	@extend %naked-button;
+
+	&.catalog-button {
+		@extend %catalog-button
+	}
+}

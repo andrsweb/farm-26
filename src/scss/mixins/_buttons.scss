@@ -1,2 +1,2 @@
 @use '../vars/vars' as v;
-@forward '../utils/placeholders/buttons/buttons.scss';
+@use '../utils/placeholders/placeholders' as *;
