@@ -12,8 +12,7 @@ const initBasketModal = () => {
 	if (!basketCount) return
 
 	const basketCountContent = Number(basketCount.textContent)
-	console.log(typeof(basketCountContent))
-
+	
 	if (basketCountContent < 1) {
 		openModal('.open-basket', '.basket-modal-wrapper', '#empty-basket-modal-wrapper')
 	}
@@ -26,7 +25,7 @@ const initAddToBasketModal = () => {
 		button.addEventListener('click', (e) => {
 			const card = e.target.closest('.category-card')
 			if (!card) return
-			
+	
 			const hiddenInfo = card.querySelector('.category-card-hidden-info')
 			const modal = document.querySelector('.add-to-basket-modal')
 			
@@ -43,8 +42,8 @@ const initAddToBasketModal = () => {
 					modal.querySelector('.modal-basket-img img').alt = cardImg.alt
 				}
 			}
-			
-			openModal('.call-basket', '.add-to-basket-modal-wrapper', '#add-to-basket-modal-wrapper')
 		})
 	})
+
+	openModal('.call-basket', '.add-to-basket-modal-wrapper', '#add-to-basket-modal-wrapper')
 }
