@@ -1,47 +1,50 @@
 import { disableBodyScroll, enableBodyScroll } from 'body-scroll-lock'
 import { setTargetElement, getTargetElement } from './common/global'
 
-export const openModal = (callButton, wrapper, lockId) => {
-	const callModalButton = document.querySelector(callButton)
-	const modalWrapper = document.querySelector(wrapper)
-	const closeButton = modalWrapper.querySelector('.close')
+export const openModal = (callButtonSelector, wrapperSelector, lockId) => {
+    const callModalButtons = document.querySelectorAll(callButtonSelector)
+    const modalWrapper = document.querySelector(wrapperSelector)
+    const closeButton = modalWrapper ? modalWrapper.querySelector('.close') : null
 
-	if (!callModalButton || !modalWrapper) return
+    if (!callModalButtons.length || !modalWrapper) return
 
-	callModalButton.addEventListener('click', () => {
-		setTargetElement(document.querySelector(lockId))
-		console.log('click')
+    callModalButtons.forEach((button) => {
+        button.addEventListener('click', () => {
+            const targetElement = document.querySelector(lockId)
+            setTargetElement(targetElement)
 
-		if (!modalWrapper.classList.contains('opened')) {
-			disableBodyScroll(getTargetElement(), { reserveScrollBarGap: true })
-			modalWrapper.classList.add('opened')
-		}
-	})
+            if (!modalWrapper.classList.contains('opened')) {
+                disableBodyScroll(getTargetElement(), { reserveScrollBarGap: true })
+                modalWrapper.classList.add('opened')
+            }
+        })
+    })
 
-	if (closeButton) {
-		closeButton.addEventListener('click', () => {
-			closeModal()
-		})
-	}
+    const closeModal = () => {
+        const targetElement = document.querySelector(lockId)
+        setTargetElement(targetElement)
 
-	modalWrapper.addEventListener('click', (e) => {
-		if (e.target === modalWrapper) {
-			closeModal()
-		}
-	})
+        if (modalWrapper.classList.contains('opened')) {
+            enableBodyScroll(getTargetElement())
+            modalWrapper.classList.remove('opened')
+        }
+    }
 
-	document.addEventListener('keydown', (e) => {
-		if (e.key === 'Escape' && modalWrapper.classList.contains('opened')) {
-			closeModal()
-		}
-	})
+    if (closeButton) {
+        closeButton.addEventListener('click', () => {
+            closeModal()
+        })
+    }
 
-	const closeModal = () => {
-		setTargetElement(document.querySelector(lockId))
+    modalWrapper.addEventListener('click', (e) => {
+        if (e.target === modalWrapper) {
+            closeModal()
+        }
+    })
 
-		if (modalWrapper.classList.contains('opened')) {
-			enableBodyScroll(getTargetElement())
-			modalWrapper.classList.remove('opened')
-		}
-	}
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && modalWrapper.classList.contains('opened')) {
+            closeModal()
+        }
+    })
 }

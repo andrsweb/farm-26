@@ -1,0 +1,190 @@
+@use 'vars/vars' as v;
+@use 'mixins/media' as m;
+
+.add-to-basket-modal {
+	width: 100%;
+	max-width: 330px;
+	background-color: v.$light;
+	border-radius: v.$br15;
+	box-shadow: v.$bs-main;
+
+	@include m.media(xl) {
+		max-width: 860px;
+	}
+
+	.close {
+		width: 40px;
+		height: 40px;
+		position: absolute;
+		right: 0;
+		top: 0;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
+
+	.modal-inner {
+		width: 100%;
+		height: 100%;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+
+		@include m.media(xl) {
+			flex-direction: row;
+			align-items: stretch;
+		}
+	}
+
+	.modal-basket-img {
+		width: 100%;
+		max-width: 330px;
+		max-height: 300px;
+
+		@include m.media(xl) {
+			max-width: 429px;
+			max-height: 400px;
+		}
+
+		img {
+			width: 100%;
+			height: 100%;
+			aspect-ratio: 1;
+			object-fit: cover;
+			border-bottom-left-radius: v.$br15;
+			border-top-left-radius: v.$br15;
+		}
+	}
+
+	.modal-basket-actions {
+		width: 100%;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		padding: 10px;
+
+		@include m.media(xl) {
+			padding: 20px 10px 20px 20px;
+		}
+
+		.modal-basket-desc {
+			width: 100%;
+			display: flex;
+			flex-direction: column;
+			margin-bottom: 34px;
+
+			@include m.media(xl) {
+				margin-bottom: 50px;
+			}
+
+			h3 {
+				font-family: v.$ff;
+				font-size: 16px;
+				font-weight: v.$fw-medium;
+				letter-spacing: -0.16px;
+				color: v.$dark-blue;
+				text-transform: none;
+				margin-bottom: 10px;
+
+				@include m.media(xl) {
+					font-size: 24px;
+					letter-spacing: -0.24px;
+					font-weight: v.$fw-regular;
+					margin-bottom: 20px;
+				}
+			}
+
+			.modal-basket-texts {
+				display: flex;
+				flex-direction: column;
+				align-items: flex-start;
+				margin-bottom: 20px;
+
+				@include m.media(xl) {
+					margin-bottom: 60px;
+				}
+
+				p {
+					color: v.$dark-blue;
+					font-family: v.$ff;
+					font-size: 15px;
+					font-weight: v.$fw-regular;
+					letter-spacing: -0.15px;
+
+					@include m.media(xl) {
+						font-size: 16px;
+						letter-spacing: -0.16px;
+					}
+				}
+			}
+		}
+
+		.modal-basket-calc-wrapper {
+			width: 100%;
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+
+			.modal-basket-price {
+				display: flex;
+				align-items: center;
+				gap: 10px;
+				color: v.$dark-blue;
+				font-family: v.$ff;
+				font-size: 24px;
+				font-weight: v.$fw-regular;
+				letter-spacing: -0.24px;
+			}
+
+			.modal-basket-weight {
+				min-width: 52px;
+				color: v.$dark-blue;
+				font-family: v.$ff;
+				font-size: 16px;
+				font-weight: v.$fw-regular;
+				letter-spacing: -0.16px;
+				text-align: center;
+
+				@include m.media(xl) {
+					min-width: 95px;
+				}
+			}
+
+			.modal-price-calc {
+				max-width: 119px;
+				display: flex;
+				align-items: center;
+
+				.decr,
+				.incr {
+					width: 44px;
+					height: 44px;
+					display: flex;
+					justify-content: center;
+					align-items: center;
+
+					img {
+						width: 18px;
+						height: 18px;
+						aspect-ratio: 1;
+					}
+				}
+
+				.calc-value {
+					padding: 10px;
+					pointer-events: none;
+					color: v.$dark-blue;
+					text-align: center;
+					font-family: v.$ff;
+					font-size: 15px;
+					font-weight: v.$fw-regular;
+					letter-spacing: -0.15px;
+				}
+			}
+		}
+
+		.add-to-basket {
+			margin-top: auto;
+		}
+	}
+}
