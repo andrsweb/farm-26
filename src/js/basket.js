@@ -32,8 +32,8 @@ const initAddToBasketModal = () => {
 			if (hiddenInfo && modal) {
 				modal.querySelector('h3').textContent = hiddenInfo.querySelector('h4').textContent
 				modal.querySelector('.modal-basket-texts').innerHTML = hiddenInfo.querySelector('.category-hidden-texts').innerHTML
-				modal.querySelector('.modal-basket-price span:first-child').textContent = hiddenInfo.querySelector('.category-hidden-price span').textContent
-				modal.querySelector('.modal-basket-weight span:first-child').textContent = hiddenInfo.querySelector('.category-hidden-weight span').textContent
+				modal.querySelector('.modal-basket-price .item-price').textContent = hiddenInfo.querySelector('.category-hidden-price span').textContent
+				modal.querySelector('.modal-basket-weight .item-weight').textContent = hiddenInfo.querySelector('.category-hidden-weight span').textContent
 				modal.querySelector('.calc-value').textContent = hiddenInfo.querySelector('.category-hidden-weight span').textContent
 				
 				const cardImg = card.querySelector('.category-card-img img')
@@ -41,6 +41,32 @@ const initAddToBasketModal = () => {
 					modal.querySelector('.modal-basket-img img').src = cardImg.src
 					modal.querySelector('.modal-basket-img img').alt = cardImg.alt
 				}
+
+				const incrButton = modal.querySelector('.incr')
+				const decrButton = modal.querySelector('.decr')
+				const priceElement = modal.querySelector('.modal-basket-price .item-price')
+				const weightElement = modal.querySelector('.modal-basket-weight .item-weight')
+
+				const initialPrice = parseFloat(priceElement.textContent)
+				const initialWeight = parseFloat(weightElement.textContent)
+
+				incrButton.addEventListener('click', () => {
+					const currentPrice = parseFloat(priceElement.textContent)
+					const currentWeight = parseFloat(weightElement.textContent)
+					
+					priceElement.textContent = (currentPrice + initialPrice).toFixed(2)
+					weightElement.textContent = (currentWeight + initialWeight).toFixed(2)
+				})
+
+				decrButton.addEventListener('click', () => {
+					const currentPrice = parseFloat(priceElement.textContent)
+					const currentWeight = parseFloat(weightElement.textContent)
+					
+					if (currentPrice <= initialPrice || currentWeight <= initialWeight) return
+					
+					priceElement.textContent = (currentPrice - initialPrice).toFixed(2)
+					weightElement.textContent = (currentWeight - initialWeight).toFixed(2)
+				})
 			}
 		})
 	})
