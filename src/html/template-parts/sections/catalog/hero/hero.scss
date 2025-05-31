@@ -198,6 +198,11 @@
 
 	&-cards {
 		width: 100%;
+		margin-bottom: 10px;
+
+		@include m.media(xl) {
+			margin-bottom: 32px;
+		}
 
 		&-inner {
 			width: 100%;

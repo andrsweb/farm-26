@@ -1,0 +1,45 @@
+@use 'vars/vars' as v;
+
+.pagination {
+	display: flex;
+	align-items: center;
+	gap: 10px;
+
+	&-prev,
+	&-next {
+		width: 40px;
+		height: 40px;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		aspect-ratio: 1;
+
+		img {
+			width: 16px;
+			height: 10px;
+		}
+	}
+
+	&-next {
+		img {
+			transform: scaleX(-1);
+		}
+	}
+
+	&-pages {
+		display: flex;
+		align-items: center;
+
+		.current-page,
+		.total-pages, span {
+			color: v.$dark-blue;
+			text-align: center;
+			font-family: v.$ff;
+			font-size: 20px;
+			font-style: normal;
+			font-weight: v.$fw-regular;
+			line-height: normal;
+			letter-spacing: -0.2px;
+		}
+	}
+}
