@@ -8,7 +8,7 @@ document.addEventListener('DOMContentLoaded', () => {
 })
 
 const initBasketModal = () => {
-	const basketCount = document.querySelector('.busket-count')
+	const basketCount = document.querySelector('.basket-count')
 	if (!basketCount) return
 
 	const basketCountContent = Number(basketCount.textContent)

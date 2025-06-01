@@ -1,0 +1,33 @@
+@use 'vars/vars' as v;
+@use 'mixins/media' as m;
+
+
+
+.basket-items-modal {
+	width: 100%;
+	max-width: 330px;
+	background-color: v.$light;
+	border-radius: v.$br15;
+	box-shadow: v.$bs-main;
+
+	@include m.media(xl) {
+		max-width: 860px;
+	}
+
+	.close {
+		width: 40px;
+		height: 40px;
+		position: absolute;
+		right: 0;
+		top: 0;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
+
+	.modal-inner {}
+
+	.add-to-basket {
+		margin-top: auto;
+	}
+}
