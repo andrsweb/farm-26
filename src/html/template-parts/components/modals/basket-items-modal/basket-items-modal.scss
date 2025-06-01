@@ -4,6 +4,13 @@
 .modal-wrapper.basket-items-modal-wrapper {
 	justify-content: flex-end;
 
+	&.opened {
+		.modal-basket-item {
+			transform: translateY(0);
+			opacity: 1;
+		}
+	}
+
 	.basket-items-modal {
 		width: 100%;
 		max-width: 307px;
