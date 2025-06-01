@@ -15,7 +15,58 @@ const initBasketModal = () => {
 	
 	if (basketCountContent < 1) {
 		openModal('.open-basket', '.basket-modal-wrapper', '#empty-basket-modal-wrapper')
-	} else openModal('.open-basket', '.basket-items-modal-wrapper', '#basket-items-wrapper')
+	} else {
+		openModal('.open-basket', '.basket-items-modal-wrapper', '#basket-items-wrapper')
+		
+		const basketItems = document.querySelectorAll('.modal-basket-item')
+		basketItems.forEach(item => {
+			const incrButton = item.querySelector('.incr')
+			const decrButton = item.querySelector('.decr')
+			const weightValue = item.querySelector('.modal-basket-weight-value')
+			const priceElement = item.querySelector('.modal-basket-item-price span')
+			const weightElement = item.querySelector('.modal-basket-item-weight span')
+			
+			const initialPrice = parseFloat(priceElement.textContent)
+			const initialWeight = parseFloat(weightValue.textContent)
+			
+			incrButton.addEventListener('click', () => {
+				const currentWeight = parseFloat(weightElement.textContent)
+				const newWeight = (currentWeight + initialWeight).toFixed(2)
+				weightElement.textContent = newWeight
+				
+				const newPrice = (initialPrice * (newWeight / initialWeight)).toFixed(2)
+				priceElement.textContent = newPrice
+				updateTotalPrice()
+			})
+			
+			decrButton.addEventListener('click', () => {
+				const currentWeight = parseFloat(weightElement.textContent)
+				if (currentWeight <= initialWeight) return
+				
+				const newWeight = (currentWeight - initialWeight).toFixed(2)
+				weightElement.textContent = newWeight
+				
+				const newPrice = (initialPrice * (newWeight / initialWeight)).toFixed(2)
+				priceElement.textContent = newPrice
+				updateTotalPrice()
+			})
+		})
+	}
+}
+
+const updateTotalPrice = () => {
+	const basketItems = document.querySelectorAll('.modal-basket-item')
+	let totalPrice = 0
+	
+	basketItems.forEach(item => {
+		const priceElement = item.querySelector('.modal-basket-item-price span')
+		totalPrice += parseFloat(priceElement.textContent)
+	})
+	
+	const totalElement = document.querySelector('.modal-basket-total-price span')
+	if (totalElement) {
+		totalElement.textContent = totalPrice.toFixed(2)
+	}
 }
 
 const initAddToBasketModal = () => {

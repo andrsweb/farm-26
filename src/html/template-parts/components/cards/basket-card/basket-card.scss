@@ -68,7 +68,14 @@
 		}
 	}
 
-	&-price {
+	&-desc {
+		display: flex;
+		align-items: center;
+		gap: 10px;
+	}
+
+
+	&-price, &-weight {
 		display: flex;
 		align-items: center;
 		gap: 10px;
