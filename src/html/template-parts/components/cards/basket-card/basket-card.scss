@@ -1,11 +1,111 @@
+
+@use 'vars/vars' as v;
+@use 'mixins/mixins' as m;
+
 .modal-basket-item {
 	width: 100%;
 	display: flex;
 	position: relative;
+	padding: 10px 0 6px 15px;
+	box-shadow: v.$bs-type1;
+	border-radius: v.$br15;
 
 	.delete {
 		position: absolute;
-		right: 0;
-		top: 0;
+		right: 10px;
+		top: 10px;
+		z-index: 1;
+	}
+
+	&-img {
+		width: 60px;
+		height: 60px;
+		aspect-ratio: 1;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		margin-right: 13px;
+
+		@include m.media(xl) {
+			width: 90px;
+			height: 90px;
+		}
+
+		img {
+			width: 100%;
+			height: 100%;
+			object-fit: cover;
+			border-radius: v.$br15;
+		}
+	}
+
+	&-info {
+		display: flex;
+		flex-direction: column;
+		align-items: flex-start;
+
+		h4 {
+			color: v.$dark-blue;
+			font-family: v.$ff;
+			font-size: 13px;
+			font-style: normal;
+			font-weight: v.$fw-regular;
+			line-height: normal;
+			letter-spacing: -0.13px;
+			margin-bottom: 16px;
+
+			@include m.media(xl) {
+				margin-bottom: 24px;
+			}
+		}
+	}
+
+	&-price {
+		display: flex;
+		align-items: center;
+		gap: 10px;
+		color: v.$dark-blue;
+		font-family: v.$ff;
+		font-size: 13px;
+		font-style: normal;
+		font-weight: v.$fw-regular;
+		line-height: normal;
+		letter-spacing: -0.13px;
+		margin-bottom: 7px;
+
+		@include m.media(xl) {
+			margin-bottom: 15px;
+		}
+	}
+
+	.modal-basket-calc {
+		display: flex;
+		align-items: center;
+		gap: 6px;
+
+		.decr,
+		.incr {
+			width: 24px;
+			height: 24px;
+			aspect-ratio: 1;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+
+			img {
+				width: 18px;
+				height: 18px;
+			}
+		}
+
+		.modal-basket-weight-value {
+			color: v.$dark-blue;
+			font-family: v.$ff;
+			font-size: 13px;
+			font-style: normal;
+			font-weight: v.$fw-regular;
+			line-height: normal;
+			letter-spacing: -0.13px;
+		}
 	}
 }

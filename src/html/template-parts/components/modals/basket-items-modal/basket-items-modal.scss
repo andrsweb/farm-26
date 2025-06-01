@@ -1,33 +1,95 @@
 @use 'vars/vars' as v;
 @use 'mixins/media' as m;
 
+.modal-wrapper.basket-items-modal-wrapper {
+	justify-content: flex-end;
 
+	.basket-items-modal {
+		width: 100%;
+		max-width: 307px;
+		background-color: v.$light;
+		border-radius: v.$br15;
+		box-shadow: v.$bs-main;
+		padding: 6px;
 
-.basket-items-modal {
-	width: 100%;
-	max-width: 330px;
-	background-color: v.$light;
-	border-radius: v.$br15;
-	box-shadow: v.$bs-main;
+		@include m.media(xl) {
+			max-width: 393px;
+		}
 
-	@include m.media(xl) {
-		max-width: 860px;
-	}
+		.close {
+			width: 40px;
+			height: 40px;
+			aspect-ratio: 1;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			margin-left: auto;
 
-	.close {
-		width: 40px;
-		height: 40px;
-		position: absolute;
-		right: 0;
-		top: 0;
-		display: flex;
-		justify-content: center;
-		align-items: center;
-	}
+			img {
+				width: 20px;
+				height: 20px;
+			}
+		}
 
-	.modal-inner {}
+		.modal-inner {
+			width: 100%;
+		}
 
-	.add-to-basket {
-		margin-top: auto;
+		.modal-basket-items {
+			max-height: 385px;
+			overflow-y: auto;
+			margin-top: 20px;
+			padding: 4px 16px 4px 4px;
+
+			&-inner {
+				width: 100%;
+				height: 100%;
+				display: flex;
+				flex-direction: column;
+				align-items: flex-start;
+				gap: 20px;
+			}
+		}
+
+		.modal-basket-total {
+			width: 100%;
+			display: flex;
+			align-items: center;
+
+			&-price {
+				display: flex;
+				align-items: center;
+				gap: 7px;
+
+				span {
+					color: v.$black;
+					font-family: v.$ff;
+					font-size: 16px;
+					font-style: normal;
+					font-weight: v.$fw-regular;
+					line-height: normal;
+					letter-spacing: -0.16px;
+				}
+
+			}
+		}
+
+		.add-to-basket {
+			margin-top: auto;
+			font-size: 13px;
+
+			@include m.media(xl) {
+				font-size: 15px;
+			}
+		}
+
+		.modal-basket-bottom {
+			padding: 10px;
+			width: 100%;
+			display: flex;
+			flex-direction: column;
+			align-items: flex-start;
+			gap: 20px;
+		}
 	}
 }

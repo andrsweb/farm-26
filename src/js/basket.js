@@ -15,7 +15,7 @@ const initBasketModal = () => {
 	
 	if (basketCountContent < 1) {
 		openModal('.open-basket', '.basket-modal-wrapper', '#empty-basket-modal-wrapper')
-	}
+	} else openModal('.open-basket', '.basket-items-modal-wrapper', '#basket-items-wrapper')
 }
 
 const initAddToBasketModal = () => {
