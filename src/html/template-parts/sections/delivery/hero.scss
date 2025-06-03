@@ -160,6 +160,7 @@
             align-items: center;
             gap: 24px;
             margin-bottom: 35px;
+            max-width: 302px;
 
              @include m.media(xl) {
                 margin-bottom: 55px;

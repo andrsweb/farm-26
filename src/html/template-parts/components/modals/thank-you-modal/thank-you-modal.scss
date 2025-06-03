@@ -1,0 +1,73 @@
+@use 'vars/vars' as v;
+@use 'mixins/media' as m;
+
+.modal-wrapper {
+	.modal {
+		&.thank-you-modal {
+			width: 100%;
+			max-width: 731px;
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			background-color: v.$light;
+			padding: 14px 10px;
+
+			.modal-inner {
+				display: flex;
+				flex-direction: column;
+				align-items: center;
+
+				.check {
+					width: 69px;
+					height: auto;
+					margin-bottom: 40px;
+
+					@include  m.media(xl) {
+						width: 144px;
+						margin-bottom: 16px;
+					}
+				}
+
+				.ty-title {
+					color: v.$dark-blue;
+					font-family: v.$ff;
+					font-size: 40px;
+					font-weight: v.$fw-regular;
+					letter-spacing: -0.4px;
+					margin-bottom: 15px;
+
+					@include  m.media(xl) {
+						letter-spacing: -0.64px;
+						font-size: 64px;
+						margin-bottom: 15px;
+					}
+				}
+
+				p {
+					color: v.$dark-blue;
+					font-family: v.$ff;
+					font-size: 16px;
+					text-align: center;
+					font-weight: v.$fw-regular;
+					letter-spacing: -0.16px;
+					margin-bottom: 16px;
+				}
+
+				.order-num {
+					color: v.$dark-blue;
+					text-align: center;
+					font-family: v.$ff;
+					font-size: 13px;
+					font-weight: v.$fw-medium;
+					line-height: 96.155%;
+					letter-spacing: -0.13px;
+					margin-bottom: 30px;
+
+					@include  m.media(xl) {
+						margin-bottom: 55px;
+					}
+				}
+			}
+		}
+	}
+}
