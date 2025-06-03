@@ -260,7 +260,62 @@
     </div>
 </aside>
         <div class="order-form">
-            <form></form>
+            <h1>
+                ОФОРМЛЕНИЕ ЗАКАЗА
+            </h1>
+            <form>
+                <fieldset>
+                    <legend>
+                        Детали заказа
+                    </legend>
+                    <input type="text" name="name" placeholder="Имя Фамилия">
+                    <input type="tel" name="tel" placeholder="Телефон">
+                    <select name="towns" id="towns">
+                        <option>Пятигорск</option>
+                        <option>Москва</option>
+                        <option>Санкт-Петербург</option>
+                    </select>
+                    <input type="text" placeholder="Адрес">
+                    <textarea placeholder="Комментарий к заказу (по желанию)"></textarea>
+                </fieldset>
+                <fieldset>
+                    <legend>
+                        Способ доставки
+                    </legend>
+                    <label class="radio-btn" for="courier">
+                        <input type="radio" checked="checked" name="delivery" id="courier">
+                        <span></span>
+                        Доставка курьером
+                    </label>
+                    <label class="radio-btn" for="self">
+                        <input type="radio" name="delivery" id="self">
+                        <span></span>
+                        Самовывоз
+                    </label>
+                </fieldset>
+                <fieldset>
+                    <legend>
+                        Способ оплаты
+                    </legend>
+                    <label class="radio-btn" for="s-pay">
+                        <input type="radio" checked="checked" name="payment" id="s-pay">
+                        <span></span>
+                        Оплата наличными при доставке
+                    </label>
+                    <label class="radio-btn" for="pay">
+                        <input type="radio" name="payment" id="pay">
+                        <span></span>
+                        Оплата картой
+                    </label>
+                </fieldset>
+                <button class="button category-button">ПОДТВЕРДИТЬ ЗАКАЗ</button>
+                <div class="form-privacy">
+                    <img src="/img/check.svg" alt="">
+                    <p>Оформляя заказ, Вы соглашаетесь с условиями
+                        <a href="/privacy.html">политики конфиденциальности</a>
+                    </p>
+                </div>
+            </form>
         </div>
     </div>
 </section>

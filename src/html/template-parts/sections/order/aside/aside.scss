@@ -2,8 +2,12 @@
 @use 'mixins/mixins' as m;
 
 .order-aside {
+  position: fixed;
+  left: 0;
+  top: 124px;
   width: 100%;
   max-width: 380px;
+  height: calc(100dvh - 124px);
   border-radius: v.$br8;
   background-color: v.$light;
 
