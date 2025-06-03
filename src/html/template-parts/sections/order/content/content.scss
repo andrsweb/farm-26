@@ -10,20 +10,30 @@
   }
 
   &-form {
-    margin-left: 380px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 43px 0 107px;
+    padding: 200px 20px 20px;
+
+    @include m.media(xl) {
+      margin-left: 380px;
+      padding: 43px 20px 107px;
+    }
 
     h1 {
       color: v.$dark-blue;
       text-align: center;
       font-family: v.$ff;
-      font-size: 40px;
+      font-size: 24px;
       font-weight: v.$fw-medium;
-      letter-spacing: -0.4px;
-      margin-bottom: 53px;
+      letter-spacing: -0.24px;
+      margin-bottom: 35px;
+
+      @include m.media(xl) {
+        font-size: 40px;
+        letter-spacing: -0.4px;
+        margin-bottom: 53px;
+      }
     }
 
     form {
@@ -32,7 +42,11 @@
       display: flex;
       flex-direction: column;
       align-items: flex-start;
-      gap: 25px;
+      gap: 20px;
+
+      @include m.media(xl) {
+        gap: 25px;
+      }
 
       input {
         width: 100%;
@@ -101,6 +115,11 @@
           align-items: center;
           gap: 20px;
           cursor: pointer;
+          color: v.$black;
+          font-family: v.$ff;
+          font-size: 13px;
+          font-weight: v.$fw-regular;
+          letter-spacing: -0.13px;
 
           span {
             width: 20px;
@@ -154,8 +173,35 @@
       }
     }
 
-    button {
-      color: v.$dark-blue;
+    .button-wrapper {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+      position: relative;
+
+      @include m.media(xl) {
+        justify-content: flex-start;
+      }
+
+      button {
+        width: 100%;
+        color: v.$dark-blue;
+
+        @include m.media(xl) {
+          width: auto;
+        }
+      }
+
+      img {
+        width: 28px;
+        height: auto;
+
+        @include m.media(xl) {
+          display: none;
+        }
+      }
     }
 
     .form-privacy {
