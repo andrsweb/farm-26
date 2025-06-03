@@ -43,10 +43,14 @@
 		}
 
 		.modal-basket-items {
-			max-height: 385px;
+			max-height: 335px;
 			overflow-y: auto;
 			margin-top: 20px;
 			padding: 4px 16px 4px 4px;
+
+			@include m.media(xl) {
+				max-height: 385px;
+			}
 
 			&-inner {
 				width: 100%;
