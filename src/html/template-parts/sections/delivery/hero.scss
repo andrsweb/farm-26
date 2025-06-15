@@ -2,7 +2,7 @@
 @use 'mixins/mixins' as m;
 
 .delivery {
-    padding: 35px 0 211px;
+    padding: 35px 0 66px;
     position: relative;
 
     @include m.media(xxxl) {
@@ -107,6 +107,7 @@
         text-align: center;
         text-transform: none;
         margin-bottom: 38px;
+        padding: 0 20px;
 
         @include m.media(xl) {
             margin-bottom: 50px;
@@ -135,12 +136,15 @@
 
     &-wrapper {
         width: 100%;
-        height: 100%;
         max-width: 1920px;
         display: flex;
         align-items: flex-start;
         justify-content: center;
         gap: 32px;
+
+        @include m.media(xl) {
+            height: 100%;
+        }
     }
 
 

@@ -141,11 +141,11 @@
   &-map {
     width: 100%;
     max-width: 786px;
-    max-height: 185px;
+    height: 245px;
     position: relative;
 
     @include m.media(sm) {
-      max-height: 462px;
+      height: 462px;
       aspect-ratio: 786/462;
     }
 
