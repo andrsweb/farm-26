@@ -43,7 +43,7 @@ $short_description = $wc_product->get_short_description();
         </div>
         <div class="category-card-hidden-info">
             <h4><?php echo esc_html($wc_product->get_title()); ?></h4>
-            <div class="category-hidden-price"><?php echo $wc_product->get_price_html(); ?></div>
+            <div class="category-hidden-price"><span><?php echo $wc_product->get_price(); ?></span></div>
             <div class="category-hidden-weight">
                 <?php if ($wc_product->has_weight()) { ?>
                     <span><?php echo $wc_product->get_weight(); ?></span> кг

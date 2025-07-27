@@ -48,8 +48,6 @@ const initBasketModal = () => {
 
                 weightElement.textContent = (weight * quantity).toFixed(2)
                 priceElement.textContent = (price * quantity).toFixed(0)
-                console.log(weight);
-                console.log(quantity);
                 item.dataset.quantity = quantity
 
                 updateTotalPrice()

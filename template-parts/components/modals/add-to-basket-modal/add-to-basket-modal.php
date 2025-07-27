@@ -20,7 +20,7 @@
                             <button class="decr" title="Уменьшить">
                                 <img src="<?php echo THEME_URL; ?>/assets/img/decr.svg" width="24" height="24" alt="">
                             </button>
-                            <span class="calc-value">0.55</span>
+                            <span class="calc-value">0.55</span> кг
                             <button class="incr" title="Увеличить">
                                 <img src="<?php echo THEME_URL; ?>/assets/img/incr.svg" width="24" height="24" alt="">
                             </button>
@@ -30,6 +30,8 @@
                 <form action="" name="add_to_basket_form" method="post">
                     <?php wp_nonce_field('add_product_to_cart_nonce', 'nonce'); ?>
                     <input type="hidden" name="product_id" value="1">
+                    <input type="hidden" name="price" value="1">
+                    <input type="hidden" name="weight" value="1">
                     <input type="hidden" name="quantity" value="1">
                     <button class="button category-button add-to-basket">
                         <?php _e('ДОБАВИТЬ В КОРЗИНУ'); ?>

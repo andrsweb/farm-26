@@ -30,60 +30,59 @@ const initAddToBasketModal = () => {
                 modal.querySelector('.modal-basket-weight .item-weight').textContent = hiddenInfo.querySelector('.category-hidden-weight span').textContent
                 modal.querySelector('.calc-value').textContent = hiddenInfo.querySelector('.category-hidden-weight span').textContent
 
+                modal.querySelector('input[name="price"]').value = hiddenInfo.querySelector('.category-hidden-price span').textContent
+                modal.querySelector('input[name="weight"]').value = hiddenInfo.querySelector('.category-hidden-weight span').textContent
+                modal.querySelector('input[name="quantity"]').value = 1
+
                 const cardImg = card.querySelector('.category-card-img img')
                 if (cardImg) {
                     modal.querySelector('.modal-basket-img img').src = cardImg.src
                     modal.querySelector('.modal-basket-img img').alt = cardImg.alt
                 }
-
-                const incrButton = modal.querySelector('.incr')
-                const decrButton = modal.querySelector('.decr')
-                const priceElement = modal.querySelector('.modal-basket-price .item-price')
-                const weightElement = modal.querySelector('.modal-basket-weight .item-weight')
-                const quantityInp = modal.querySelector('input[name="quantity"]')
-                let quantity = 1
-                quantityInp.value = quantity
-
-                const initialPrice = parseFloat(priceElement.textContent)
-                const initialWeight = parseFloat(weightElement.textContent)
-
-                incrButton.addEventListener('click', () => {
-                    const currentPrice = parseFloat(priceElement.textContent)
-                    const currentWeight = parseFloat(weightElement.textContent)
-
-                    priceElement.textContent = (currentPrice + initialPrice).toFixed(2)
-                    weightElement.textContent = (currentWeight + initialWeight).toFixed(2)
-                    quantity++
-                    quantityInp.value = quantity;
-                })
-
-                incrButton.addEventListener('click', () => {
-                    quantity = parseFloat(quantity + 1)
-
-                    weightElement.textContent = (weight * quantity).toFixed(2)
-                    priceElement.textContent = (price * quantity).toFixed(0)
-
-                    item.dataset.quantity = quantity
-
-                    quantityInp.value = quantity;
-                })
-
-                decrButton.addEventListener('click', () => {
-                    const currentPrice = parseFloat(priceElement.textContent)
-                    const currentWeight = parseFloat(weightElement.textContent)
-
-
-                    if (currentPrice <= initialPrice || currentWeight <= initialWeight) return
-
-                    priceElement.textContent = (currentPrice - initialPrice).toFixed(2)
-                    weightElement.textContent = (currentWeight - initialWeight).toFixed(2)
-
-                    quantity--
-                    quantityInp.value = 1 < quantity ? quantity : 1
-                })
             }
         })
     })
+
+    document.addEventListener('click', (e) => {
+        const btn = e.target.closest('button')
+        if (!btn) return
+
+        if (!btn.classList.contains('incr') && !btn.classList.contains('decr')) return
+
+        const modal = btn.closest('.add-to-basket-modal');
+        if (!modal) return
+
+        let quantityInp = modal.querySelector('input[name="quantity"]');
+        if (!quantityInp) return;
+
+        let priceInp = modal.querySelector('input[name="price"]');
+        if (!priceInp) return;
+
+        let weightInp = modal.querySelector('input[name="weight"]');
+        if (!weightInp) return;
+
+        const priceElement = modal.querySelector('.modal-basket-price .item-price');
+        const weightElement = modal.querySelector('.modal-basket-weight .item-weight');
+        const price = parseFloat(priceInp.value);
+        const weight = parseFloat(weightInp.value);
+
+        if (btn.classList.contains('incr')) {
+            let quantity = parseFloat(quantityInp.value) + 1;
+
+            weightElement.textContent = (weight * quantity).toFixed(2);
+            priceElement.textContent = (price * quantity).toFixed(0);
+            quantityInp.value = quantity;
+        }
+
+        if (btn.classList.contains('decr')) {
+            let quantity = parseFloat(quantityInp.value) - 1;
+            if (0 >= quantity) return;
+
+            weightElement.textContent = (weight * quantity).toFixed(2);
+            priceElement.textContent = (price * quantity).toFixed(0);
+            quantityInp.value = quantity;
+        }
+    });
 
     openModal('.call-basket', '.add-to-basket-modal-wrapper', '#add-to-basket-modal-wrapper')
 }
