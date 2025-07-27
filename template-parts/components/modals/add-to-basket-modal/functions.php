@@ -1,0 +1,26 @@
+<?php
+
+/**
+ * Add product to WooCommerce card
+ *
+ * @return void
+ * @throws Exception
+ */
+function add_product_to_cart(): void
+{
+    check_ajax_referer('add_product_to_cart_nonce', 'nonce');
+
+    $product_id = intval($_REQUEST['product_id']);
+    $quantity = intval($_REQUEST['quantity']);
+
+    $added = WC()->cart->add_to_cart($product_id, $quantity);
+
+    if ($added) {
+        wp_send_json_success(['cart_count' => WC()->cart->get_cart_contents_count()]);
+    }
+
+    wp_send_json_error(['message' => 'Could not add to cart']);
+}
+
+add_action('wp_ajax_add_product_to_cart', 'add_product_to_cart');
+add_action('wp_ajax_nopriv_add_product_to_cart', 'add_product_to_cart');

@@ -74,7 +74,7 @@
 			margin-bottom: 34px;
 
 			@include m.media(xl) {
-				margin-bottom: 50px;
+				//margin-bottom: 50px;
 			}
 
 			h3 {
@@ -101,7 +101,7 @@
 				margin-bottom: 20px;
 
 				@include m.media(xl) {
-					margin-bottom: 60px;
+					//margin-bottom: 60px;
 				}
 
 				p {
@@ -164,8 +164,8 @@
 					align-items: center;
 
 					img {
-						width: 18px;
-						height: 18px;
+						width: 24px;
+						height: 24px;
 						aspect-ratio: 1;
 					}
 				}

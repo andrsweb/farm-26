@@ -1,0 +1,18 @@
+ul.menu {
+  width: 100%;
+}
+a.category-filter {
+  color: #000;
+}
+a.category-filter:hover {
+  color: #000;
+}
+a.category-filter:visited {
+  color: #000;
+}
+a.category-filter.active {
+  color: #95d476;
+}
+
+
+/*# sourceMappingURL=styles.css.map*/

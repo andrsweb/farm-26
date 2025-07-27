@@ -1,0 +1,223 @@
+@use 'vars/vars' as v;
+@use 'mixins/mixins' as m;
+
+.about {
+  padding: 26px 0;
+
+  @include m.media(xl) {
+    padding: 100px 0;
+  }
+
+  h1 {
+    color: v.$dark-blue;
+    font-size: 20px;
+    font-weight: v.$fw-medium;
+    letter-spacing: -0.2px;
+    margin-bottom: 30px;
+    text-transform: none;
+
+    @include m.media(xl) {
+      font-size: 30px;
+      letter-spacing: -0.3px;
+      margin-bottom: 20px;
+    }
+  }
+
+  h2 {
+    width: 100%;
+    color: v.$dark-blue;
+    text-align: center;
+    font-family: v.$ff;
+    font-size: 20px;
+    font-weight: v.$fw-medium;
+    letter-spacing: -0.2px;
+    text-align: left;
+    text-transform: none;
+    margin-bottom: 25px;
+    position: relative;
+
+    @include m.media(xl) {
+      margin-bottom: 20px;
+      color: v.$neon-green;
+    }
+  }
+
+  &-wrapper {
+    width: 100%;
+    max-width: 853px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0 auto;
+    position: relative;
+  }
+
+  &-texts {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 13px;
+    margin-bottom: 31px;
+
+    p {
+      text-align: center;
+      color: v.$dark-blue;
+      text-align: center;
+      font-family: v.$ff;
+      font-size: 18px;
+      font-weight: v.$fw-regular;
+      letter-spacing: -0.2px;
+
+      @include m.media(xl) {
+        font-size: 20px;
+        letter-spacing: -0.2px;
+      }
+
+      em {
+        color: v.$neon-green;
+        font-style: normal;
+        font-weight: v.$fw-medium;
+      }
+    }
+  }
+
+  &-list {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 25px;
+    margin-bottom: 30px;
+
+    @include m.media(xl) {
+      gap: 30px;
+    }
+
+    li {
+      width: 100%;
+      max-width: 402px;
+      color: v.$dark-blue;
+      font-family: v.$ff;
+      font-size: 18px;
+      font-weight: v.$fw-regular;
+      letter-spacing: -0.16px;
+      padding-left: 20px;
+      position: relative;
+
+      @include m.media(xl) {
+        font-size: 16px;
+        letter-spacing: -0.16px;
+      }
+
+      &:before {
+        content: '';
+        width: 6px;
+        height: 6px;
+        position: absolute;
+        left: 0;
+        top: 6px;
+        display: block;
+        background-color: v.$neon-green;
+        border-radius: 50%;
+      }
+
+      em {
+        color: v.$neon-green;
+        font-style: normal;
+        font-weight: v.$fw-medium;
+      }
+    }
+  }
+
+  .link-wrapper {
+    @include m.media(xl) {
+      position: relative;
+    }
+
+    a {
+      color: v.$dark-blue;
+    }
+
+    img {
+      width: 71px;
+      height: 71px;
+      aspect-ratio: 1;
+      position: absolute;
+      z-index: -1;
+      left: -50px;
+      transform: rotate(25deg);
+      top: calc(100% - 30px);
+
+      @include m.media(xl) {
+        left: -35px;
+        top: -25px;
+      }
+    }
+  }
+
+  .a-icon, .b-icon, .img-left, .img-right {
+    position: absolute;
+    z-index: -1;
+  }
+
+  .a-icon {
+    display: none;
+    right: -40px;
+    top: -20px;
+
+    @include m.media(xxl) {
+      display: block;
+    }
+  }
+
+  .b-icon {
+    display: block;
+    right: 0;
+    bottom: 50%;
+    transform: translateY(50%);
+    z-index: -1;
+
+    @include m.media(xxl) {
+      display: none;
+    }
+  }
+
+  .img-left, .img-right {
+    display: none;
+
+    @include m.media(xl) {
+      display: block;
+    }
+  }
+
+  .img-left {
+    bottom: -100px;
+    left: -535px;
+
+    @include m.media(xxl) {
+      bottom: -100px;
+      left: -455px;
+    }
+
+    @include m.media(big) {
+      bottom: -100px;
+      left: -335px;
+    }
+  }
+
+  .img-right {
+    bottom: -140px;
+    right: -480px;
+
+    @include m.media(xxl) {
+      bottom: -140px;
+      right: -380px;
+    }
+
+    @include m.media(big) {
+      bottom: -140px;
+      right: -280px;
+    }
+  }
+}
+
