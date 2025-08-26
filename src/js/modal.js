@@ -1,5 +1,5 @@
-import { disableBodyScroll, enableBodyScroll } from 'body-scroll-lock'
-import { setTargetElement, getTargetElement } from './common/global'
+import {disableBodyScroll, enableBodyScroll} from 'body-scroll-lock'
+import {setTargetElement, getTargetElement} from './common/global'
 
 export const openModal = (callButtonSelector, wrapperSelector, lockId) => {
     const callModalButtons = document.querySelectorAll(callButtonSelector)
@@ -14,7 +14,7 @@ export const openModal = (callButtonSelector, wrapperSelector, lockId) => {
             setTargetElement(targetElement)
 
             if (!modalWrapper.classList.contains('opened')) {
-                disableBodyScroll(getTargetElement(), { reserveScrollBarGap: true })
+                disableBodyScroll(getTargetElement(), {reserveScrollBarGap: true})
                 modalWrapper.classList.add('opened')
             }
         })

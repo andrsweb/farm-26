@@ -30,6 +30,7 @@ $in_cart_weight = $weight * $quantity;
      data-total_weight="<?php echo esc_attr($weight); ?>"
      data-price="<?php echo esc_attr($wc_product->get_price()); ?>"
      data-total_price="<?php echo esc_attr($line_total); ?>"
+     data-cart_item_key="<?php echo esc_attr($cart_item['key']); ?>"
 >
     <button class="delete" title="<?php _e('Удалить из корзины'); ?>">
         <img src="<?php echo THEME_URL; ?>/assets/img/close-border.svg" width="24" height="24">

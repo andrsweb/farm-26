@@ -12,6 +12,9 @@ $site_title = get_bloginfo('name');
 $phone = get_field('phone_number', 'option') ?? '8 (968) 260-72-72';
 $working_hours_start = get_field('working_hours_start', 'option') ?? '09:00';
 $working_hours_end = get_field('working_hours_end', 'option') ?? '19:30';
+$cart = WC()->cart;
+$cart_items_count = $cart ? count(WC()->cart->get_cart()) : 0;
+$open_basket_class = 0 >= $cart_items_count ? 'open-empty-basket' : 'open-full-basket';
 ?>
 <header class="header">
     <div class="container">
@@ -45,9 +48,11 @@ $working_hours_end = get_field('working_hours_end', 'option') ?? '19:30';
                         <img src="<?php echo esc_attr(THEME_URL); ?>/assets/img/phone.svg" width="18" height="18"
                              alt="<?php echo $phone; ?>">
                     </a>
-                    <button class="basket open-basket">
+                    <button class="basket open-basket <?php echo esc_attr($open_basket_class); ?>">
                         <div class="basket-wrapper">
-                            <span class="basket-count">1</span>
+                            <?php if (0 < $cart_items_count) { ?>
+                                <span class="basket-count"><?php echo esc_attr($cart_items_count); ?></span>
+                            <?php } ?>
                             <!-- Change to 0 and reload page to see another modal when click on basket ICO -->
                             <img src="<?php echo esc_attr(THEME_URL); ?>/assets/img/busket.svg" width="24" height="24"
                                  alt="Векторная темно-синяя корзина">

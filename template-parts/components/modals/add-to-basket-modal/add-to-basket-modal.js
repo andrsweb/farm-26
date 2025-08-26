@@ -65,23 +65,20 @@ const initAddToBasketModal = () => {
         const weightElement = modal.querySelector('.modal-basket-weight .item-weight');
         const price = parseFloat(priceInp.value);
         const weight = parseFloat(weightInp.value);
+        let quantity = parseFloat(quantityInp.value) || 1;
 
         if (btn.classList.contains('incr')) {
-            let quantity = parseFloat(quantityInp.value) + 1;
-
-            weightElement.textContent = (weight * quantity).toFixed(2);
-            priceElement.textContent = (price * quantity).toFixed(0);
-            quantityInp.value = quantity;
+            quantity = quantity + 1;
         }
 
         if (btn.classList.contains('decr')) {
-            let quantity = parseFloat(quantityInp.value) - 1;
+            quantity = quantity - 1;
             if (0 >= quantity) return;
-
-            weightElement.textContent = (weight * quantity).toFixed(2);
-            priceElement.textContent = (price * quantity).toFixed(0);
-            quantityInp.value = quantity;
         }
+
+        weightElement.textContent = (weight * quantity).toFixed(2);
+        priceElement.textContent = (price * quantity).toFixed(0);
+        quantityInp.value = quantity;
     });
 
     openModal('.call-basket', '.add-to-basket-modal-wrapper', '#add-to-basket-modal-wrapper')
@@ -97,6 +94,7 @@ const initAddToBasketForm = () => {
             const productId = e.target.querySelector('input[name="product_id"]').value;
             const quantity = e.target.querySelector('input[name="quantity"]').value;
             const nonce = e.target.querySelector('input[name="nonce"]').value;
+            let modalBasketItemsInner = document.querySelector('.modal-basket-items-inner');
 
             fetch(ajax_object.ajax_url, {
                 method: 'POST',
@@ -112,13 +110,55 @@ const initAddToBasketForm = () => {
                 .then(res => res.json())
                 .then(data => {
                     if (data.success) {
-                        alert('Added to cart! Cart count: ' + data.data.cart_count);
-                    } else {
-                        alert(data.data.message || 'Error adding to cart');
+                        updateBasket();
+                        showEmptyBasket(data.data.cart_count);
+                        modalBasketItemsInner.innerHTML = data.data.items_html;
+                        updateBasketCount(data.data.cart_count);
+                        updateTotalPrice();
+
+                        const closeModalButton = document.querySelector('.add-to-basket-modal .close');
+                        if (closeModalButton) {
+                            closeModalButton.click();
+                        }
                     }
                 });
 
             return false;
         });
     }
+}
+
+window.updateBasket = () => {
+    const openBasketButton = document.querySelector('.open-basket');
+    if (!openBasketButton) return;
+
+    openBasketButton.click();
+}
+
+window.updateBasketCount = (count = 0) => {
+    const openBasketElement = document.querySelector('.open-basket');
+    if (!openBasketElement) return;
+
+    const basketWrapper = openBasketElement.querySelector('.basket-wrapper');
+    if (!basketWrapper) return;
+
+    let basketCountElement = basketWrapper.querySelector('.basket-count');
+    if (!basketCountElement && 0 < count) {
+        openBasketElement.classList.remove('open-empty-basket');
+        openBasketElement.classList.add('open-full-basket');
+
+        basketCountElement = document.createElement('span');
+        basketCountElement.classList.add('basket-count');
+        basketWrapper.prepend(basketCountElement);
+    }
+
+    if (basketCountElement && 0 >= count) {
+        openBasketElement.classList.add('open-empty-basket');
+        openBasketElement.classList.remove('open-full-basket');
+
+        basketCountElement.remove();
+        return;
+    }
+
+    basketCountElement.textContent = count;
 }

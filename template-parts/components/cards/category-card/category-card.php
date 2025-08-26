@@ -46,9 +46,9 @@ $short_description = $wc_product->get_short_description();
             <div class="category-hidden-price"><span><?php echo $wc_product->get_price(); ?></span></div>
             <div class="category-hidden-weight">
                 <?php if ($wc_product->has_weight()) { ?>
-                    <span><?php echo $wc_product->get_weight(); ?></span> кг
+                    <span><?php echo $wc_product->get_weight(); ?></span>
                 <?php } else { ?>
-                    <span>1</span>
+                    <span>1.00</span>
                 <?php } ?>
             </div>
             <div class="category-hidden-texts">

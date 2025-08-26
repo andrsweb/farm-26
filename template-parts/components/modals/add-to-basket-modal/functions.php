@@ -16,7 +16,20 @@ function add_product_to_cart(): void
     $added = WC()->cart->add_to_cart($product_id, $quantity);
 
     if ($added) {
-        wp_send_json_success(['cart_count' => WC()->cart->get_cart_contents_count()]);
+        $cart_items = WC()->cart->get_cart();
+        ob_start();
+        foreach ($cart_items as $item) {
+            get_template_part('template-parts/components/cards/basket-card', null, array(
+                'cart_item' => $item
+            ));
+        }
+        $items_html = ob_get_clean();
+        wp_send_json_success(
+            [
+                'cart_count' => count($cart_items),
+                'items_html' => $items_html,
+            ]
+        );
     }
 
     wp_send_json_error(['message' => 'Could not add to cart']);

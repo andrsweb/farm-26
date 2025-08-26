@@ -7,56 +7,76 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 const initBasketModal = () => {
-    const basketCount = document.querySelector('.basket-count')
-    if (!basketCount) return
+    openModal('.open-basket', '.basket-items-modal-wrapper', '#basket-items-wrapper')
 
-    const basketCountContent = Number(basketCount.textContent)
+    document.addEventListener('click', (e) => {
+        const btn = e.target.closest('button')
+        if (!btn) return
 
-    if (basketCountContent < 1) {
-        openModal('.open-basket', '.basket-modal-wrapper', '#empty-basket-modal-wrapper')
-    } else {
-        openModal('.open-basket', '.basket-items-modal-wrapper', '#basket-items-wrapper')
+        if (!btn.classList.contains('incr') && !btn.classList.contains('decr')) return
 
-        const basketItems = document.querySelectorAll('.modal-basket-item')
-        basketItems.forEach(item => {
-            const incrButton = item.querySelector('.incr')
-            const decrButton = item.querySelector('.decr')
-            const weight = item.dataset.weight ? parseFloat(item.dataset.weight) : 1
-            const price = item.dataset.price ? parseFloat(item.dataset.price) : 1
-            let quantity = item.dataset.quantity ? parseFloat(item.dataset.quantity) : 1
-            const priceElement = item.querySelector('.modal-basket-item-price span')
-            const weightElement = item.querySelector('.modal-basket-item-weight span')
+        let item = btn.closest('.modal-basket-item');
+        if (!item) return
 
-            incrButton.addEventListener('click', () => {
-                quantity = parseFloat(quantity + 1)
+        let quantity = item.dataset.quantity ? parseFloat(item.dataset.quantity) : 1
 
-                weightElement.textContent = (weight * quantity).toFixed(2)
-                priceElement.textContent = (price * quantity).toFixed(0)
+        const weight = item.dataset.weight ? parseFloat(item.dataset.weight) : 1
+        const price = item.dataset.price ? parseFloat(item.dataset.price) : 1
 
-                item.dataset.quantity = quantity
+        const priceElement = item.querySelector('.modal-basket-item-price span')
+        const weightElement = item.querySelector('.modal-basket-item-weight span')
 
-                updateTotalPrice()
+        if (btn.classList.contains('incr')) {
+            quantity = quantity + 1;
+        }
+
+        if (btn.classList.contains('decr')) {
+            quantity = quantity - 1;
+            if (0 >= quantity) return;
+        }
+
+        weightElement.textContent = (weight * quantity).toFixed(2);
+        priceElement.textContent = (price * quantity).toFixed(0);
+        item.dataset.quantity = quantity;
+
+        updateTotalPrice()
+    });
+
+    document.addEventListener('click', (e) => {
+        const deleteBtn = e.target.closest('button.delete')
+        if (deleteBtn) {
+            const basketItem = deleteBtn.closest('.modal-basket-item')
+            if (!basketItem) {
+                return;
+            }
+
+            const cartItemKey = basketItem.dataset.cart_item_key;
+            const nonce = document.querySelector('input[name="delete_nonce"]').value;
+
+            fetch(ajax_object.ajax_url, {
+                method: 'POST',
+                credentials: 'same-origin',
+                headers: {'Content-Type': 'application/x-www-form-urlencoded'},
+                body: new URLSearchParams({
+                    action: 'delete_product_from_cart',
+                    cart_item_key: cartItemKey,
+                    nonce: nonce
+                })
             })
-
-            decrButton.addEventListener('click', () => {
-                quantity = parseFloat(quantity - 1)
-                if (0 >= quantity) {
-                    quantity = 1
-
-                    return;
-                }
-
-                weightElement.textContent = (weight * quantity).toFixed(2)
-                priceElement.textContent = (price * quantity).toFixed(0)
-                item.dataset.quantity = quantity
-
-                updateTotalPrice()
-            })
-        })
-    }
+                .then(res => res.json())
+                .then(data => {
+                    if (data.success) {
+                        basketItem.remove();
+                        updateTotalPrice();
+                        showEmptyBasket(data.data.cart_count);
+                        updateBasketCount(data.data.cart_count);
+                    }
+                });
+        }
+    });
 }
 
-const updateTotalPrice = () => {
+window.updateTotalPrice = () => {
     const basketItems = document.querySelectorAll('.modal-basket-item')
     let totalPrice = 0
 
@@ -67,6 +87,34 @@ const updateTotalPrice = () => {
 
     const totalElement = document.querySelector('.modal-basket-total-price span')
     if (totalElement) {
-        totalElement.textContent = totalPrice.toFixed(2)
+        totalElement.textContent = totalPrice.toFixed(0)
     }
 }
+
+window.showEmptyBasket = (count = 0) => {
+    const emptyBasketModal = document.querySelector('.empty-basket-modal')
+    const itemsBasketModal = document.querySelector('.basket-items-modal')
+    if (!emptyBasketModal || !itemsBasketModal) return
+
+    if (0 >= count) {
+        emptyBasketModal.classList.remove('hided')
+        itemsBasketModal.classList.add('hided')
+    } else {
+        emptyBasketModal.classList.add('hided')
+        itemsBasketModal.classList.remove('hided')
+    }
+}
+
+document.addEventListener('click', (e) => {
+    const closeBtn = e.target.closest('button.close')
+    if (!closeBtn) {
+        return;
+    }
+
+    const modal = closeBtn.closest('.basket-items-modal-wrapper')
+    if (!modal) {
+        return;
+    }
+
+    modal.classList.remove('opened')
+});
