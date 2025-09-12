@@ -8,11 +8,8 @@
 get_template_part('template-parts/components/modals/add-to-basket-modal/add-to-basket-modal');
 get_template_part('template-parts/components/modals/empty-basket-modal');
 get_template_part('template-parts/components/modals/basket-items-modal/basket-items-modal');
+get_template_part('template-parts/components/modals/thank-you-modal');
 
 wp_footer();
 ?>
-<!--@@include('../../template-parts/components/modals/empty-basket-modal/empty-basket-modal.html')-->
-<!--@@include('../../template-parts/components/modals/add-to-basket-modal/add-to-basket-modal.html')-->
-<!--@@include('../../template-parts/components/modals/basket-items-modal/basket-items-modal.html')-->
-<!--@@include('../../template-parts/components/modals/thank-you-modal/thank-you-modal.html')')-->
 </div><!-- .wrapper -->

@@ -6,7 +6,6 @@ if (mix.inProduction()) {
     mix.sourceMaps().webpackConfig({devtool: 'source-map'});
 }
 
-
 mix.setPublicPath('assets/dist')
     .setResourceRoot('/wp-content/themes/farm-26/assets/dist');
 

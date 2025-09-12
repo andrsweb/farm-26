@@ -29,7 +29,7 @@ if (is_tax('product_cat')) {
 }
 
 if (is_checkout()) {
-    get_template_part('template-parts/components/checkout/checkout');
+    get_template_part('template-parts/components/checkout/content');
 }
 
 get_footer();

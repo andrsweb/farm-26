@@ -1,0 +1,147 @@
+.order-aside-info {
+  a,
+  a:visited {
+    color: #242424;
+    text-decoration: underline;
+  }
+}
+
+.preloader {
+  background-image: url("../../../assets/img/preloader.svg");
+  background-repeat: no-repeat;
+  background-position: center;
+  display: block;
+  min-height: 32px;
+  min-width: 32px;
+}
+
+fieldset {
+  .preloader {
+    width: 200px;
+  }
+}
+
+label.form-checkbox {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  gap: 20px;
+  cursor: pointer;
+  color: #000;
+  font-family: "Montserrat", sans-serif;
+  font-size: 13px;
+  font-weight: 400;
+  letter-spacing: -.13px;
+
+  span {
+    width: 20px;
+    height: 20px;
+    aspect-ratio: 1;
+    position: relative;
+
+    &::before {
+      content: "";
+      display: block;
+      width: 20px;
+      height: 20px;
+      border: 1px solid #0f3446;
+      border-radius: 10%;
+      aspect-ratio: 1;
+    }
+
+    &::after {
+      content: "";
+      position: absolute;
+      left: -6px;
+      top: -10px;
+      display: block;
+      width: 35px;
+      height: 35px;
+      opacity: 0;
+      transition: opacity ease 0.2s;
+      background-image: url("../../../assets/img/tick.svg");
+      background-position: center;
+      background-size: contain;
+      background-repeat: no-repeat;
+    }
+  }
+
+  input {
+    width: 0;
+    height: 0;
+    position: absolute;
+    left: 0;
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+    z-index: -100;
+    visibility: hidden;
+    opacity: 0;
+  }
+
+  input:checked + span::after {
+    opacity: 1;
+  }
+
+  a {
+    display: contents;
+    color: #000;
+    text-decoration: underline;
+    font-weight: 500;
+
+    &:hover,
+    &:visited {
+      color: #000;
+      text-decoration: underline;
+    }
+  }
+}
+
+.button {
+  &:disabled {
+    background-color: #bfbfbf;
+    cursor: not-allowed;
+  }
+}
+
+a.button {
+  color: #000;
+}
+
+.open-thank-you-modal {
+  display: none;
+}
+
+.checkout_fields {
+  label {
+    span {
+      display: none;
+    }
+  }
+
+  label.error-label {
+    position: relative;
+
+    input {
+      border: 1px solid #FF4747 !important;
+    }
+
+    span {
+      color: #FF4747;
+      display: flex;
+      position: absolute;
+      height: 37px;
+      width: calc(100% - 2px);
+      top: 1px;
+      left: 1px;
+      align-items: center;
+      padding: 10px;
+      background-color: #d9d9d9;
+      cursor: text;
+    }
+  }
+}

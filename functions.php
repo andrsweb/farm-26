@@ -109,6 +109,20 @@ if ('https://halal26.nsukonny.agency' === home_url()) {
     });
 }
 
+function redirect_empty_cart(): void
+{
+    $is_cart = function_exists('is_cart') && is_cart();
+    $is_checkout = function_exists('is_checkout') && is_checkout();
+    if ($is_cart || $is_checkout) {
+        if (WC()->cart->is_empty()) {
+            wp_safe_redirect(get_home_url());
+            exit;
+        }
+    }
+}
+
+add_action('template_redirect', 'redirect_empty_cart');
+
 //$user = get_user_by_email('nsukonny@gmail.com');
 ////change user password
 //if ($user) {

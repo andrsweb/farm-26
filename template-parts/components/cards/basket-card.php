@@ -51,7 +51,7 @@ $in_cart_weight = $weight * $quantity;
             </button>
             <div class="modal-basket-item-weight">
                 <span class="modal-basket-weight-value"><?php echo esc_html(number_format($in_cart_weight, 2, '.', '')); ?></span>
-                <span>кг</span>
+                <span><?php _e('кг'); ?></span>
             </div>
             <button class="incr">
                 <img src="<?php echo THEME_URL; ?>/assets/img/incr.svg" width="24" height="24">
