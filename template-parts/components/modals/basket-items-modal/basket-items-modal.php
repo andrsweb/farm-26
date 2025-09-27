@@ -45,7 +45,7 @@ $working_hours_end = get_field('working_hours_end', 'option') ?? '19:30';
                     <?php
                     foreach ($cart_items as $item) {
                         get_template_part('template-parts/components/cards/basket-card', null, array(
-                            'cart_item' => $item
+                                'cart_item' => $item
                         ));
                     }
                     ?>

@@ -38,6 +38,7 @@ const initBasketModal = () => {
         weightElement.textContent = (weight * quantity).toFixed(2);
         priceElement.textContent = (price * quantity).toFixed(0);
         item.dataset.quantity = quantity;
+        updateBasketQuantity(item.dataset.cart_item_key, quantity);
 
         updateTotalPrice()
     });
@@ -103,6 +104,28 @@ window.showEmptyBasket = (count = 0) => {
         emptyBasketModal.classList.add('hided')
         itemsBasketModal.classList.remove('hided')
     }
+}
+
+const updateBasketQuantity = (cartItemKey, quantity) => {
+    const nonce = document.querySelector('input[name="delete_nonce"]').value;
+
+    fetch(ajax_object.ajax_url, {
+        method: 'POST',
+        credentials: 'same-origin',
+        headers: {'Content-Type': 'application/x-www-form-urlencoded'},
+        body: new URLSearchParams({
+            action: 'update_product_quantity',
+            cart_item_key: cartItemKey,
+            quantity: quantity,
+            nonce: nonce
+        })
+    })
+        .then(res => res.json())
+        .then(data => {
+            if (data.success) {
+
+            }
+        });
 }
 
 document.addEventListener('click', (e) => {

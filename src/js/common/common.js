@@ -18,10 +18,10 @@ const toggleBurgerMenu = () => {
 		setTargetElement(document.querySelector('#hidden-menu'))
 
 		if(!header.classList.contains('opened')) {
-			disableBodyScroll(getTargetElement(), { reserveScrollBarGap: true })
+			//disableBodyScroll(getTargetElement(), { reserveScrollBarGap: true })
 			header.classList.add('opened')
 		} else {
-			enableBodyScroll(getTargetElement())
+			//enableBodyScroll(getTargetElement())
 			header.classList.remove('opened')
 		}
 	})

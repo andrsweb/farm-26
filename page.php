@@ -7,7 +7,7 @@
  * and that other 'pages' on your WordPress site will use a
  * different template.
  *
- * @package woostify
+ * @package farm-26
  */
 
 get_header();

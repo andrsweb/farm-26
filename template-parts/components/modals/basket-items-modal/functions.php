@@ -24,3 +24,27 @@ function delete_product_from_cart(): void
 
 add_action('wp_ajax_delete_product_from_cart', 'delete_product_from_cart');
 add_action('wp_ajax_nopriv_delete_product_from_cart', 'delete_product_from_cart');
+
+/**
+ * Update product quantity in WooCommerce cart
+ *
+ * @return void
+ * @throws Exception
+ */
+function update_product_quantity(): void
+{
+    check_ajax_referer('delete_basket_item_nonce', 'nonce');
+
+    $cart_item_key = $_REQUEST['cart_item_key'] ?? '';
+    $quantity = intval($_REQUEST['quantity'] ?? 1);
+    if (empty($cart_item_key)) {
+        wp_send_json_error(['message' => 'Не удалось найти товар в корзине']);
+    }
+
+    WC()->cart->set_quantity($cart_item_key, $quantity);
+
+    wp_send_json_success();
+}
+
+add_action('wp_ajax_update_product_quantity', 'update_product_quantity');
+add_action('wp_ajax_nopriv_update_product_quantity', 'update_product_quantity');
