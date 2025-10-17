@@ -1,5 +1,5 @@
 import {disableBodyScroll, enableBodyScroll} from 'body-scroll-lock'
-import {setTargetElement, getTargetElement} from './common/global'
+import {setTargetElement, getTargetElement} from './common/global.js'
 
 export const openModal = (callButtonSelector, wrapperSelector, lockId) => {
     const callModalButtons = document.querySelectorAll(callButtonSelector)

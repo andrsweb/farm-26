@@ -20,11 +20,11 @@
         <meta name="apple-mobile-web-app-title" content="<?php echo esc_attr( $wp_title ); ?>">
 	<?php } ?>
 
-    <link rel="icon" type="image/png" href="<?php echo esc_attr( THEME_URL ); ?>/favicon-96x96.png" sizes="96x96">
-    <link rel="icon" type="image/svg+xml" href="<?php echo esc_attr( THEME_URL ); ?>/favicon.svg">
-    <link rel="shortcut icon" href="<?php echo esc_attr( THEME_URL ); ?>/favicon.ico">
-    <link rel="apple-touch-icon" sizes="180x180" href="<?php echo esc_attr( THEME_URL ); ?>/apple-touch-icon.png">
-    <link rel="manifest" href="<?php echo esc_attr( THEME_URL ); ?>/site.webmanifest">
+    <link rel="icon" type="image/png" href="<?php echo esc_attr( THEME_URL ); ?>/favicon/favicon-96x96.png" sizes="96x96">
+    <link rel="icon" type="image/svg+xml" href="<?php echo esc_attr( THEME_URL ); ?>/favicon/favicon.svg">
+    <link rel="shortcut icon" href="<?php echo esc_attr( THEME_URL ); ?>/favicon/favicon.ico">
+    <link rel="apple-touch-icon" sizes="180x180" href="<?php echo esc_attr( THEME_URL ); ?>/favicon/apple-touch-icon.png">
+    <link rel="manifest" href="<?php echo esc_attr( THEME_URL ); ?>/favicon/site.webmanifest">
 
 	<?php wp_head(); ?>
 

@@ -1,4 +1,8 @@
 {
     "/app.js": "/app.js",
-    "/styles.css": "/styles.css"
+    "/app.js.map": "/app.js.map",
+    "/styles.css": "/styles.css",
+    "/images/preloader.svg?ed1296fb3d63268e636bcd311f1c10fa": "/images/preloader.svg?ed1296fb3d63268e636bcd311f1c10fa",
+    "/images/tick.svg?f2f673afc1621d8940632ec9a3fec4d4": "/images/tick.svg?f2f673afc1621d8940632ec9a3fec4d4",
+    "/styles.css.map": "/styles.css.map"
 }

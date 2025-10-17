@@ -1,4 +1,4 @@
-import {openModal} from "../../../src/js/modal";
+import {openModal} from "../../../src/js/modal.js";
 
 document.addEventListener('DOMContentLoaded', () => {
     'use strict'

@@ -12,9 +12,17 @@ if (empty($current_category)) {
     return;
 }
 
+$page = get_query_var('paged') ? absint(get_query_var('paged')) : 1;
+if (0 >= $page) {
+    $page = 1;
+}
+
 $categories = get_terms([
-    'taxonomy' => 'product_cat',
-    'hide_empty' => true,
+        'taxonomy' => 'product_cat',
+        'hide_empty' => true,
+        'meta_key' => 'category_order',
+        'orderby' => 'meta_value_num',
+        'order' => 'ASC',
 ]);
 
 if (empty($categories)) {
@@ -23,22 +31,25 @@ if (empty($categories)) {
 
 $current_parent_category_id = 0 === $current_category->parent ? $current_category->term_id : $current_category->parent;
 $sub_categories = get_terms([
-    'taxonomy' => 'product_cat',
-    'hide_empty' => true,
-    'parent' => $current_parent_category_id,
+        'taxonomy' => 'product_cat',
+        'hide_empty' => true,
+        'parent' => $current_parent_category_id,
 ]);
 
 $posts_per_page = 12;
 $products_args = array(
-    'post_type' => 'product',
-    'posts_per_page' => $posts_per_page,
-    'tax_query' => array(
-        array(
-            'taxonomy' => 'product_cat',
-            'field' => 'term_id',
-            'terms' => $current_category->term_id,
+        'post_type' => 'product',
+        'posts_per_page' => $posts_per_page,
+        'tax_query' => array(
+                array(
+                        'taxonomy' => 'product_cat',
+                        'field' => 'term_id',
+                        'terms' => $current_category->term_id,
+                ),
         ),
-    ),
+        'paged' => $page,
+        'orderby' => 'date',
+        'order' => 'DESC',
 );
 $products = get_posts($products_args);
 $products_args['posts_per_page'] = -1;
@@ -109,7 +120,7 @@ $is_home = is_front_page() || is_home();
                     if (!empty($products)) {
                         foreach ($products as $product) {
                             get_template_part('template-parts/components/cards/category-card/category-card', null, array(
-                                'product' => $product,
+                                    'product' => $product,
                             ));
                         }
                     }
@@ -118,8 +129,8 @@ $is_home = is_front_page() || is_home();
             </div>
             <?php
             get_template_part('template-parts/components/pagination', null, array(
-                'page' => isset($args['page']) ? absint($args['page']) : 1,
-                'total_pages' => count($products_total) / $posts_per_page,
+                    'page' => $page,
+                    'total_pages' => count($products_total) / $posts_per_page,
             ));
             ?>
         </div>

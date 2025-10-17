@@ -1,4 +1,4 @@
-import './common/common'
-import './simpleBar'
-import './basket'
-import './modal'
+import './/common/common.js'
+import './/simpleBar.js'
+import './/basket.js'
+import './/modal.js'

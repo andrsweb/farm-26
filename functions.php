@@ -17,10 +17,10 @@ define('THEME_VERSION', time()); //TODO change to version like 1.0.1
 function add_blog_menus(): void
 {
     register_nav_menus(
-        array(
-            'side_menu_catalog' => __('Боковое меню. Каталог.'),
-            'side_menu_information' => __('Боковое меню. Информация.'),
-        )
+            array(
+                    'side_menu_catalog' => __('Боковое меню. Каталог.'),
+                    'side_menu_information' => __('Боковое меню. Информация.'),
+            )
     );
 }
 
@@ -34,41 +34,41 @@ add_action('after_setup_theme', 'add_blog_menus');
 function add_theme_styles(): void
 {
     wp_register_style(
-        'farm-26-style',
-        THEME_URL . '/assets/css/main.min.css',
-        null,
-        THEME_VERSION,
-        false
+            'farm-26-style',
+            THEME_URL . '/assets/css/main.min.css',
+            null,
+            THEME_VERSION,
+            false
     );
 
     wp_enqueue_style('farm-26-style');
 
     wp_register_style(
-        'farm-26-app-style',
-        THEME_URL . '/assets/dist/styles.css',
-        null,
-        THEME_VERSION,
-        false
+            'farm-26-app-style',
+            THEME_URL . '/assets/dist/styles.css',
+            null,
+            THEME_VERSION,
+            false
     );
 
     wp_enqueue_style('farm-26-app-style');
 
     wp_register_script(
-        'farm-26-script',
-        THEME_URL . '/assets/js/main.min.js',
-        null,
-        THEME_VERSION,
-        true
+            'farm-26-script',
+            THEME_URL . '/assets/js/main.min.js',
+            null,
+            THEME_VERSION,
+            true
     );
 
     wp_enqueue_script('farm-26-script');
 
     wp_register_script(
-        'farm-26-app',
-        THEME_URL . '/assets/dist/app.js',
-        null,
-        THEME_VERSION,
-        true
+            'farm-26-app',
+            THEME_URL . '/assets/dist/app.js',
+            null,
+            THEME_VERSION,
+            true
     );
 
     wp_localize_script('farm-26-app', 'ajax_object', array('ajax_url' => admin_url('admin-ajax.php')));
@@ -80,13 +80,13 @@ add_action('wp_enqueue_scripts', 'add_theme_styles');
 
 if (function_exists('acf_add_options_page')) {
     $option_page = acf_add_options_page(
-        array(
-            'page_title' => __('Настройки Halal26'),
-            'menu_title' => __('Настройки Halal26'),
-            'menu_slug' => 'theme-options',
-            'capability' => 'edit_posts',
-            'redirect' => false,
-        )
+            array(
+                    'page_title' => __('Настройки Halal26'),
+                    'menu_title' => __('Настройки Halal26'),
+                    'menu_slug' => 'theme-options',
+                    'capability' => 'edit_posts',
+                    'redirect' => false,
+            )
     );
 }
 
@@ -132,3 +132,72 @@ add_action('template_redirect', 'redirect_empty_cart');
 //}
 
 require_once 'template-parts/template-parts.php';
+
+/* ----------------------------------------------
+ * Custom order field for WooCommerce product categories
+ * ---------------------------------------------- */
+
+/**
+ * Add ordering field on Add Category screen
+ *
+ * @return void
+ */
+function add_ordering_for_product_categories(): void
+{
+    ?>
+    <div class="form-field term-category-order-wrap">
+        <label for="category_order"><?php _e('Порядок вывода категории', 'farm-26'); ?></label>
+        <input type="number" name="category_order" id="category_order" value="0" min="0" max="100" step="1"/>
+        <p class="description"><?php _e('Число. от 1 до 100', 'farm-26'); ?></p>
+    </div>
+    <?php
+}
+
+add_action('product_cat_add_form_fields', 'add_ordering_for_product_categories');
+
+/**
+ * Add ordering fields to Edit category screen
+ *
+ * @param WP_Term $term Current term object.
+ *
+ * @return void
+ */
+function edit_ordering_for_product_categories(WP_Term $term): void
+{
+    $value = get_term_meta($term->term_id, 'category_order', true);
+    if ($value === '') {
+        $value = 0;
+    }
+    ?>
+    <tr class="form-field term-category-order-wrap">
+        <th scope="row">
+            <label for="category_order"><?php _e('Порядок вывода категории', 'farm-26'); ?></label>
+        </th>
+        <td>
+            <input type="number" name="category_order" id="category_order" value="<?php echo esc_attr($value); ?>"
+                   min="0" max="100" step="1"/>
+            <p class="description"><?php _e('Число. от 1 до 100', 'farm-26'); ?></p>
+        </td>
+    </tr>
+    <?php
+}
+
+add_action('product_cat_edit_form_fields', 'edit_ordering_for_product_categories', 10, 1);
+
+/**
+ * Save ordering field
+ *
+ * @param $term_id
+ *
+ * @return void
+ */
+function update_category_order($term_id): void
+{
+    if (isset($_POST['category_order'])) {
+        $order = intval($_POST['category_order']);
+        update_term_meta($term_id, 'category_order', $order);
+    }
+}
+
+add_action('created_product_cat', 'update_category_order');
+add_action('edited_product_cat', 'update_category_order');

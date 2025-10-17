@@ -5,8 +5,11 @@
  * @package farm26
  */
 $wc_categories = get_terms([
-    'taxonomy' => 'product_cat',
-    'hide_empty' => true,
+        'taxonomy' => 'product_cat',
+        'hide_empty' => true,
+        'meta_key' => 'category_order',
+        'orderby' => 'meta_value_num',
+        'order' => 'ASC',
 ]);
 ?>
 <section class="hero">

@@ -1,5 +1,5 @@
 import { disableBodyScroll, enableBodyScroll } from 'body-scroll-lock'
-import { setTargetElement, getTargetElement } from './global'
+import { setTargetElement, getTargetElement } from './/global.js'
 
 document.addEventListener('DOMContentLoaded', () => {
 	'use strict'

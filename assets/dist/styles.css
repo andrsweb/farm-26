@@ -13,6 +13,173 @@ a.category-filter:visited {
 a.category-filter.active {
   color: #95d476;
 }
+.category-card-img {
+  background: #3A3A3A80;
+  border-top-left-radius: 12px;
+  border-top-right-radius: 12px;
+}
+.add-to-basket-modal .modal-basket-actions {
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+.add-to-basket-modal .modal-basket-actions .modal-basket-calc-wrapper .modal-price-calc .calc-value {
+  padding: 10px 0 10px 10px;
+}
+a.add-to-basket {
+  color: #242424;
+}
+.modal-basket-item-weight {
+  margin-bottom: 0;
+  gap: 4px;
+}
+.modal-wrapper .modal.empty-basket-modal.hided,
+.modal-wrapper .modal.basket-items-modal.hided {
+  display: none;
+}
+@media (max-width: 1199px) {
+  .modal-wrapper.basket-items-modal-wrapper .basket-items-modal .modal-basket-bottom {
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+  }
+  .modal-wrapper.basket-items-modal-wrapper .basket-items-modal .modal-basket-bottom .modal-basket-total {
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+  }
+  .modal-wrapper.basket-items-modal-wrapper .basket-items-modal .modal-basket-bottom .add-to-basket {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    width: 90%;
+  }
+}
+.order-aside-info a,
+.order-aside-info a:visited {
+  color: #242424;
+  text-decoration: underline;
+}
+.preloader {
+  background-image: url(/wp-content/themes/farm-26/assets/dist/images/preloader.svg?ed1296fb3d63268e636bcd311f1c10fa);
+  background-repeat: no-repeat;
+  background-position: center;
+  display: block;
+  min-height: 32px;
+  min-width: 32px;
+}
+fieldset .preloader {
+  width: 200px;
+}
+label.form-checkbox {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  gap: 20px;
+  cursor: pointer;
+  color: #000;
+  font-family: "Montserrat", sans-serif;
+  font-size: 13px;
+  font-weight: 400;
+  letter-spacing: -0.13px;
+}
+label.form-checkbox span {
+  width: 20px;
+  height: 20px;
+  aspect-ratio: 1;
+  position: relative;
+}
+label.form-checkbox span::before {
+  content: "";
+  display: block;
+  width: 20px;
+  height: 20px;
+  border: 1px solid #0f3446;
+  border-radius: 10%;
+  aspect-ratio: 1;
+}
+label.form-checkbox span::after {
+  content: "";
+  position: absolute;
+  left: -6px;
+  top: -10px;
+  display: block;
+  width: 35px;
+  height: 35px;
+  opacity: 0;
+  -webkit-transition: opacity ease 0.2s;
+  transition: opacity ease 0.2s;
+  background-image: url(/wp-content/themes/farm-26/assets/dist/images/tick.svg?f2f673afc1621d8940632ec9a3fec4d4);
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+label.form-checkbox input {
+  width: 0;
+  height: 0;
+  position: absolute;
+  left: 0;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+  z-index: -100;
+  visibility: hidden;
+  opacity: 0;
+}
+label.form-checkbox input:checked + span::after {
+  opacity: 1;
+}
+label.form-checkbox a {
+  display: contents;
+  color: #000;
+  text-decoration: underline;
+  font-weight: 500;
+}
+label.form-checkbox a:hover,
+label.form-checkbox a:visited {
+  color: #000;
+  text-decoration: underline;
+}
+.button:disabled {
+  background-color: #bfbfbf;
+  cursor: not-allowed;
+}
+a.button {
+  color: #000;
+}
+.open-thank-you-modal {
+  display: none;
+}
+.checkout_fields label span {
+  display: none;
+}
+.checkout_fields label.error-label {
+  position: relative;
+}
+.checkout_fields label.error-label input {
+  border: 1px solid #FF4747 !important;
+}
+.checkout_fields label.error-label span {
+  color: #FF4747;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  position: absolute;
+  height: 37px;
+  width: calc(100% - 2px);
+  top: 1px;
+  left: 1px;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 10px;
+  background-color: #d9d9d9;
+  cursor: text;
+}
 
 
 /*# sourceMappingURL=styles.css.map*/
