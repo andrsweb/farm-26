@@ -19,9 +19,12 @@ if (empty($wc_product)) {
 
 $attachment_url = wp_get_attachment_url($wc_product->get_image_id());
 $short_description = $wc_product->get_short_description();
+$unit = $wc_product->has_weight() ? _('кг') : _('шт');
 ?>
 <div class="category-card"
-     data-product_id="<?php echo esc_attr($wc_product->get_id()); ?>">
+     data-product_id="<?php echo esc_attr($wc_product->get_id()); ?>"
+     data-unit="<?php echo esc_attr($unit); ?>"
+>
     <div class="category-card-inner">
         <div class="category-card-img">
             <img src="<?php echo esc_url($attachment_url); ?>" alt="<?php echo esc_html($wc_product->get_title()); ?>">
@@ -31,7 +34,8 @@ $short_description = $wc_product->get_short_description();
             <div class="category-card-desc">
                 <div class="category-card-price"><?php echo $wc_product->get_price_html(); ?></div>
                 <?php if ($wc_product->has_weight()) { ?>
-                    <div class="category-card-weight"><span><?php echo $wc_product->get_weight(); ?></span> кг</div>
+                    <div class="category-card-weight">
+                        <span><?php echo $wc_product->get_weight(); ?></span> <?php echo esc_attr($unit); ?></div>
                 <?php } ?>
                 <button class="button category-button desktop call-basket">
                     <span><?php _e('ВЫБРАТЬ'); ?></span>
@@ -48,7 +52,7 @@ $short_description = $wc_product->get_short_description();
                 <?php if ($wc_product->has_weight()) { ?>
                     <span><?php echo $wc_product->get_weight(); ?></span>
                 <?php } else { ?>
-                    <span>1.00</span>
+                    <span>1</span>
                 <?php } ?>
             </div>
             <div class="category-hidden-texts">

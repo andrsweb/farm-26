@@ -20,6 +20,7 @@ const initAddToBasketModal = () => {
 
             if (hiddenInfo && modal) {
                 const productId = card.getAttribute('data-product_id');
+                const unit = card.getAttribute('data-unit');
                 const productIdInp = modal.querySelector('input[name="product_id"]');
 
                 productIdInp.value = productId;
@@ -33,6 +34,9 @@ const initAddToBasketModal = () => {
                 modal.querySelector('input[name="price"]').value = hiddenInfo.querySelector('.category-hidden-price span').textContent
                 modal.querySelector('input[name="weight"]').value = hiddenInfo.querySelector('.category-hidden-weight span').textContent
                 modal.querySelector('input[name="quantity"]').value = 1
+                modal.querySelectorAll('.unit').forEach(unitElem => {
+                    unitElem.textContent = unit;
+                });
 
                 const cardImg = card.querySelector('.category-card-img img')
                 if (cardImg) {
@@ -76,7 +80,7 @@ const initAddToBasketModal = () => {
             if (0 >= quantity) return;
         }
 
-        weightElement.textContent = (weight * quantity).toFixed(2);
+        weightElement.textContent = (weight * quantity).toFixed(0);
         priceElement.textContent = (price * quantity).toFixed(0);
         quantityInp.value = quantity;
     });

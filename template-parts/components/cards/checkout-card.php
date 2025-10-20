@@ -22,6 +22,7 @@ $quantity = $cart_item['quantity'] ?? 1;
 $line_total = $cart_item['line_total'] ?? 0;
 $weight = $wc_product->has_weight() ? $wc_product->get_weight() : 1;
 $in_cart_weight = $weight * $quantity;
+$unit = $wc_product->has_weight() ? _('кг') : _('шт');
 ?>
 <div class="order-aside-item">
     <div class="order-aside-item-inner">
@@ -32,7 +33,7 @@ $in_cart_weight = $weight * $quantity;
             <h4><?php echo esc_html($title); ?></h4>
             <div class="order-aside-item-weight">
                 <?php echo esc_html(number_format($in_cart_weight, 2, '.', '')); ?>
-                <span><?php _e('кг'); ?></span>
+                <span class="unit"><?php echo $unit; ?></span>
             </div>
             <div class="order-aside-item-price"><?php echo $line_total ?> <span>₽</span></div>
         </div>

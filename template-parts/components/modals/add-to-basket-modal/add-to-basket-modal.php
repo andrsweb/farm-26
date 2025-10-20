@@ -15,12 +15,13 @@
                     </div>
                     <div class="modal-basket-calc-wrapper">
                         <div class="modal-basket-price"><span class="item-price">295.5</span><span>₽</span></div>
-                        <div class="modal-basket-weight"><span class="item-weight">0.55</span><span>кг</span></div>
+                        <div class="modal-basket-weight"><span class="item-weight">0.55</span><span
+                                    class="unit">кг</span></div>
                         <div class="modal-price-calc">
                             <button class="decr" title="Уменьшить">
                                 <img src="<?php echo THEME_URL; ?>/assets/img/decr.svg" width="24" height="24" alt="">
                             </button>
-                            <span class="calc-value">0.55</span> кг
+                            <span class="calc-value">0.55</span> <span class="unit">кг</span>
                             <button class="incr" title="Увеличить">
                                 <img src="<?php echo THEME_URL; ?>/assets/img/incr.svg" width="24" height="24" alt="">
                             </button>

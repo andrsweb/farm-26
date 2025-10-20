@@ -22,6 +22,8 @@ $quantity = $cart_item['quantity'] ?? 1;
 $line_total = $cart_item['line_total'] ?? 0;
 $weight = $wc_product->has_weight() ? $wc_product->get_weight() : 1;
 $in_cart_weight = $weight * $quantity;
+$in_cart_weight = $wc_product->has_weight() ? number_format($in_cart_weight, 2, '.', '') : $in_cart_weight;
+$unit = $wc_product->has_weight() ? _('кг') : _('шт');
 ?>
 <div class="modal-basket-item"
      data-product_id="<?php echo esc_attr($wc_product->get_id()); ?>"
@@ -50,8 +52,8 @@ $in_cart_weight = $weight * $quantity;
                 <img src="<?php echo THEME_URL; ?>/assets/img/decr.svg" width="24" height="24">
             </button>
             <div class="modal-basket-item-weight">
-                <span class="modal-basket-weight-value"><?php echo esc_html(number_format($in_cart_weight, 2, '.', '')); ?></span>
-                <span><?php _e('кг'); ?></span>
+                <span class="modal-basket-weight-value"><?php echo esc_html($in_cart_weight); ?></span>
+                <span class="unit"><?php echo $unit; ?></span>
             </div>
             <button class="incr">
                 <img src="<?php echo THEME_URL; ?>/assets/img/incr.svg" width="24" height="24">

@@ -381,12 +381,18 @@ var initShippingZones = function initShippingZones() {
       if (data.success) {
         preloader.remove();
         fieldset.insertAdjacentHTML('beforeend', data.data.html);
+        updateTotalCost();
       }
     });
   });
   shippingSelect.dispatchEvent(new Event('change', {
     bubbles: true
   }));
+  document.addEventListener('change', function (e) {
+    if (e.target.closest('input[name="shipping_method"]')) {
+      updateTotalCost();
+    }
+  });
 };
 var initAcceptPublicOffer = function initAcceptPublicOffer() {
   var acceptPublicOfferCheckbox = document.getElementById('accept_public_offer');
@@ -460,6 +466,36 @@ var initValidationErrors = function initValidationErrors() {
     e.target.value = out;
   });
 };
+var updateTotalCost = function updateTotalCost() {
+  var checkedShippingMethod = document.querySelector('input[name="shipping_method"]:checked');
+  var shippingZone = document.getElementById('shipping_zone');
+  var orderAsideInner = document.querySelector('.order-aside-inner');
+  if (!checkedShippingMethod || !orderAsideInner || !shippingZone) {
+    return;
+  }
+  fetch(ajax_object.ajax_url, {
+    method: 'POST',
+    credentials: 'same-origin',
+    headers: {
+      'Content-Type': 'application/x-www-form-urlencoded'
+    },
+    body: new URLSearchParams({
+      action: 'update_total_cost',
+      shipping_method_id: checkedShippingMethod.value,
+      shipping_zone_id: shippingZone.value
+    })
+  }).then(function (res) {
+    return res.json();
+  }).then(function (data) {
+    if (data.success) {
+      var oldAsideInfo = orderAsideInner.querySelector('.order-aside-info');
+      if (oldAsideInfo) {
+        oldAsideInfo.remove();
+      }
+      orderAsideInner.insertAdjacentHTML('afterbegin', data.data.aside_info);
+    }
+  });
+};
 var validateFields = function validateFields(checkoutForm) {
   var errors = false;
   var fields = checkoutForm.querySelectorAll('input[required], select[required], textarea[required]');
@@ -508,6 +544,7 @@ var initAddToBasketModal = function initAddToBasketModal() {
       var modal = document.querySelector('.add-to-basket-modal');
       if (hiddenInfo && modal) {
         var productId = card.getAttribute('data-product_id');
+        var unit = card.getAttribute('data-unit');
         var productIdInp = modal.querySelector('input[name="product_id"]');
         productIdInp.value = productId;
         modal.querySelector('h3').textContent = hiddenInfo.querySelector('h4').textContent;
@@ -518,6 +555,9 @@ var initAddToBasketModal = function initAddToBasketModal() {
         modal.querySelector('input[name="price"]').value = hiddenInfo.querySelector('.category-hidden-price span').textContent;
         modal.querySelector('input[name="weight"]').value = hiddenInfo.querySelector('.category-hidden-weight span').textContent;
         modal.querySelector('input[name="quantity"]').value = 1;
+        modal.querySelectorAll('.unit').forEach(function (unitElem) {
+          unitElem.textContent = unit;
+        });
         var cardImg = card.querySelector('.category-card-img img');
         if (cardImg) {
           modal.querySelector('.modal-basket-img img').src = cardImg.src;
@@ -550,7 +590,7 @@ var initAddToBasketModal = function initAddToBasketModal() {
       quantity = quantity - 1;
       if (0 >= quantity) return;
     }
-    weightElement.textContent = (weight * quantity).toFixed(2);
+    weightElement.textContent = (weight * quantity).toFixed(0);
     priceElement.textContent = (price * quantity).toFixed(0);
     quantityInp.value = quantity;
   });
@@ -660,7 +700,7 @@ var initBasketModal = function initBasketModal() {
       quantity = quantity - 1;
       if (0 >= quantity) return;
     }
-    weightElement.textContent = (weight * quantity).toFixed(2);
+    weightElement.textContent = (weight * quantity).toFixed(0);
     priceElement.textContent = (price * quantity).toFixed(0);
     item.dataset.quantity = quantity;
     updateBasketQuantity(item.dataset.cart_item_key, quantity);

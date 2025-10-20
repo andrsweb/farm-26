@@ -41,12 +41,19 @@ const initShippingZones = () => {
                 if (data.success) {
                     preloader.remove();
                     fieldset.insertAdjacentHTML('beforeend', data.data.html);
+                    updateTotalCost();
                 }
             });
 
     });
 
     shippingSelect.dispatchEvent(new Event('change', {bubbles: true}));
+
+    document.addEventListener('change', (e) => {
+        if (e.target.closest('input[name="shipping_method"]')) {
+            updateTotalCost();
+        }
+    });
 }
 
 const initAcceptPublicOffer = () => {
@@ -143,6 +150,37 @@ const initValidationErrors = () => {
 
         e.target.value = out;
     });
+}
+
+const updateTotalCost = () => {
+    const checkedShippingMethod = document.querySelector('input[name="shipping_method"]:checked');
+    const shippingZone = document.getElementById('shipping_zone');
+    const orderAsideInner = document.querySelector('.order-aside-inner');
+    if (!checkedShippingMethod || !orderAsideInner || !shippingZone) {
+        return;
+    }
+
+    fetch(ajax_object.ajax_url, {
+        method: 'POST',
+        credentials: 'same-origin',
+        headers: {'Content-Type': 'application/x-www-form-urlencoded'},
+        body: new URLSearchParams({
+            action: 'update_total_cost',
+            shipping_method_id: checkedShippingMethod.value,
+            shipping_zone_id: shippingZone.value,
+        })
+    })
+        .then(res => res.json())
+        .then(data => {
+            if (data.success) {
+                let oldAsideInfo = orderAsideInner.querySelector('.order-aside-info');
+                if (oldAsideInfo) {
+                    oldAsideInfo.remove();
+                }
+
+                orderAsideInner.insertAdjacentHTML('afterbegin', data.data.aside_info);
+            }
+        });
 }
 
 const validateFields = (checkoutForm) => {

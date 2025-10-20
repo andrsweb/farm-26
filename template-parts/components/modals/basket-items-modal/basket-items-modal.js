@@ -35,7 +35,7 @@ const initBasketModal = () => {
             if (0 >= quantity) return;
         }
 
-        weightElement.textContent = (weight * quantity).toFixed(2);
+        weightElement.textContent = (weight * quantity).toFixed(0);
         priceElement.textContent = (price * quantity).toFixed(0);
         item.dataset.quantity = quantity;
         updateBasketQuantity(item.dataset.cart_item_key, quantity);
