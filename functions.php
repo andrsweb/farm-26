@@ -214,3 +214,27 @@ function update_category_order($term_id): void
 
 add_action('created_product_cat', 'update_category_order');
 add_action('edited_product_cat', 'update_category_order');
+
+/**
+ * Add weight support to product total in order email
+ *
+ * @param string $html HTML content.
+ * @param \WC_Order_Item $item Item object.
+ */
+function add_weight_support_to_order_email(string $html, WC_Order_Item $item): string
+{
+    $wc_product = $item->get_product();
+    if (!$wc_product) {
+        return $html;
+    }
+
+    if (!$wc_product->has_weight()) {
+        return $html . ' ' . __('шт.');
+    }
+
+    $total_weight = $wc_product->get_weight() * $item->get_quantity();
+
+    return $total_weight . ' ' . __('кг');
+}
+
+add_filter('woocommerce_email_order_item_quantity', 'add_weight_support_to_order_email', 10, 2);
