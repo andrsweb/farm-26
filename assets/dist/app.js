@@ -590,7 +590,10 @@ var initAddToBasketModal = function initAddToBasketModal() {
       quantity = quantity - 1;
       if (0 >= quantity) return;
     }
-    weightElement.textContent = (weight * quantity).toFixed(0);
+    var weightTotal = weight * quantity;
+    var rounded = Math.round(weightTotal * 10) / 10;
+    var weightText = Math.abs(rounded - Math.round(rounded)) < 1e-9 ? String(Math.round(rounded)) : rounded.toFixed(1);
+    weightElement.textContent = weightText;
     priceElement.textContent = (price * quantity).toFixed(0);
     quantityInp.value = quantity;
   });
@@ -700,7 +703,10 @@ var initBasketModal = function initBasketModal() {
       quantity = quantity - 1;
       if (0 >= quantity) return;
     }
-    weightElement.textContent = (weight * quantity).toFixed(0);
+    var weightTotal = weight * quantity;
+    var rounded = Math.round(weightTotal * 10) / 10;
+    var weightText = Math.abs(rounded - Math.round(rounded)) < 1e-9 ? String(Math.round(rounded)) : rounded.toFixed(1);
+    weightElement.textContent = weightText;
     priceElement.textContent = (price * quantity).toFixed(0);
     item.dataset.quantity = quantity;
     updateBasketQuantity(item.dataset.cart_item_key, quantity);

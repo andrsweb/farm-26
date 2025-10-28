@@ -123,13 +123,26 @@ function redirect_empty_cart(): void
 
 add_action('template_redirect', 'redirect_empty_cart');
 
-//$user = get_user_by_email('nsukonny@gmail.com');
-////change user password
-//if ($user) {
-//    wp_set_password('Kaje73hfdhh6g-3', $user->ID);
-//    echo '<pre>---prd-' . print_r( 'user finded', true ) . '</pre>';
-//    wp_die();
-//}
+/*
+ * Redirtect to categories page if opened product page
+ */
+function redirect_single_product_to_category(): void
+{
+    if (is_product()) {
+        global $post;
+        $terms = get_the_terms($post->ID, 'product_cat');
+        if (!empty($terms) && !is_wp_error($terms)) {
+            $first_term = array_shift($terms);
+            $term_link = get_term_link($first_term);
+            if (!is_wp_error($term_link)) {
+                wp_safe_redirect($term_link);
+                exit;
+            }
+        }
+    }
+}
+
+add_action('template_redirect', 'redirect_single_product_to_category');
 
 require_once 'template-parts/template-parts.php';
 

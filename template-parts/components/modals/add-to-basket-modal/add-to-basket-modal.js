@@ -80,7 +80,12 @@ const initAddToBasketModal = () => {
             if (0 >= quantity) return;
         }
 
-        weightElement.textContent = (weight * quantity).toFixed(0);
+        const weightTotal = weight * quantity;
+        const rounded = Math.round(weightTotal * 10) / 10;
+        const weightText = (Math.abs(rounded - Math.round(rounded)) < 1e-9)
+            ? String(Math.round(rounded))
+            : rounded.toFixed(1);
+        weightElement.textContent = weightText;
         priceElement.textContent = (price * quantity).toFixed(0);
         quantityInp.value = quantity;
     });

@@ -22,7 +22,7 @@ $quantity = $cart_item['quantity'] ?? 1;
 $line_total = $cart_item['line_total'] ?? 0;
 $weight = $wc_product->has_weight() ? $wc_product->get_weight() : 1;
 $in_cart_weight = $weight * $quantity;
-$in_cart_weight = $wc_product->has_weight() ? number_format($in_cart_weight, 2, '.', '') : $in_cart_weight;
+$in_cart_weight = $wc_product->has_weight() ? number_format($in_cart_weight, 1, '.', '') : $in_cart_weight;
 $unit = $wc_product->has_weight() ? _('кг') : _('шт');
 ?>
 <div class="modal-basket-item"

@@ -130,7 +130,7 @@ $is_home = is_front_page() || is_home();
             <?php
             get_template_part('template-parts/components/pagination', null, array(
                     'page' => $page,
-                    'total_pages' => count($products_total) / $posts_per_page,
+                    'total_pages' => ceil(count($products_total) / $posts_per_page),
             ));
             ?>
         </div>
