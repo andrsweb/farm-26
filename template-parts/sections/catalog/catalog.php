@@ -29,28 +29,35 @@ if (empty($categories)) {
     return;
 }
 
+$is_shop_page = is_page(wc_get_page_id('shop'));
 $current_parent_category_id = 0 === $current_category->parent ? $current_category->term_id : $current_category->parent;
-$sub_categories = get_terms([
-        'taxonomy' => 'product_cat',
-        'hide_empty' => true,
-        'parent' => $current_parent_category_id,
-]);
+if (!$is_shop_page) {
+    $sub_categories = get_terms([
+            'taxonomy' => 'product_cat',
+            'hide_empty' => true,
+            'parent' => $current_parent_category_id,
+    ]);
+}
 
 $posts_per_page = 12;
 $products_args = array(
         'post_type' => 'product',
         'posts_per_page' => $posts_per_page,
-        'tax_query' => array(
-                array(
-                        'taxonomy' => 'product_cat',
-                        'field' => 'term_id',
-                        'terms' => $current_category->term_id,
-                ),
-        ),
         'paged' => $page,
         'orderby' => 'date',
         'order' => 'DESC',
 );
+
+if (!$is_shop_page) {
+    $products_args['tax_query'] = array(
+            array(
+                    'taxonomy' => 'product_cat',
+                    'field' => 'term_id',
+                    'terms' => $current_category->term_id,
+            ),
+    );
+}
+
 $products = get_posts($products_args);
 $products_args['posts_per_page'] = -1;
 $products_total = get_posts($products_args);
@@ -61,45 +68,11 @@ $is_home = is_front_page() || is_home();
 ?>
 <section class="category">
     <div class="category-wrapper">
-        <aside class="category-aside">
-            <div class="category-aside-inner" data-simplebar>
-                <h2><?php _e('Каталог'); ?></h2>
-                <div class="category-aside-links">
-                    <a class="category-aside-link" href="#">Все</a>
-                    <?php
-                    foreach ($categories as $category) {
-                        if ($category->parent != 0) {
-                            continue;
-                        }
-
-                        $class = $category->term_id == $current_parent_category_id ? " active" : "";
-                        $class = $category->parent == $current_parent_category_id ? " active" : $class;
-                        ?>
-                        <a class="category-aside-link<?php echo esc_attr($class); ?>"
-                           href="<?php echo esc_url(get_term_link($category)) ?>">
-                            <?php echo esc_html($category->name); ?>
-                        </a>
-                    <?php } ?>
-                </div>
-            </div>
-            <div class="category-aside-footer">
-                <?php if (!$is_home) { ?>
-                    <a href="<?php echo esc_url(home_url()); ?>">
-                        <img src="<?php echo esc_attr($logo_url); ?>"
-                             alt="<?php echo esc_attr($logo_text); ?>"
-                             width="36" height="36"
-                        >
-                    </a>
-                <?php } else { ?>
-                    <a href="<?php echo esc_url(home_url('/o-magazine/')); ?>">
-                        <img src="<?php echo esc_attr($logo_url); ?>"
-                             alt="<?php echo esc_attr($logo_text); ?>"
-                             width="36" height="36"
-                        >
-                    </a>
-                <?php } ?>
-            </div>
-        </aside>
+        <?php
+        get_template_part('template-parts/components/categories', null,
+                array('current_parent_category_id' => $current_parent_category_id)
+        );
+        ?>
         <div class="category-content">
             <?php if (!empty($sub_categories)) { ?>
                 <div class="category-filters">

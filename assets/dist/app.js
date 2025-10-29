@@ -804,6 +804,50 @@ document.addEventListener('click', function (e) {
 
 /***/ }),
 
+/***/ "./template-parts/components/search/search.js":
+/*!****************************************************!*\
+  !*** ./template-parts/components/search/search.js ***!
+  \****************************************************/
+/***/ (function(__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) {
+
+__webpack_require__.r(__webpack_exports__);
+document.addEventListener('DOMContentLoaded', function () {
+  'use strict';
+
+  initSearchBar();
+});
+var initSearchBar = function initSearchBar() {
+  var searchInput = document.getElementById('search-bar-input');
+  var searchLabel = document.querySelector('.search-bar-label');
+  if (!searchInput || !searchLabel) return;
+  searchInput.addEventListener('change', function (e) {
+    var query = e.target.value.trim();
+    if (!query) {
+      searchLabel.classList.remove('show-clear');
+    } else {
+      searchLabel.classList.add('show-clear');
+    }
+  });
+  document.addEventListener('click', function (e) {
+    if (e.target.classList.contains('search-bar-clear')) {
+      searchInput.value = '';
+      searchLabel.classList.remove('show-clear');
+      searchInput.dispatchEvent(new Event('change', {
+        bubbles: true
+      }));
+    }
+  });
+  return;
+  // removed by dead control flow
+
+  // removed by dead control flow
+
+  // removed by dead control flow
+
+};
+
+/***/ }),
+
 /***/ "./template-parts/template-parts.js":
 /*!******************************************!*\
   !*** ./template-parts/template-parts.js ***!
@@ -814,6 +858,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_modals_add_to_basket_modal_add_to_basket_modal_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./components/modals/add-to-basket-modal/add-to-basket-modal.js */ "./template-parts/components/modals/add-to-basket-modal/add-to-basket-modal.js");
 /* harmony import */ var _components_modals_basket_items_modal_basket_items_modal_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./components/modals/basket-items-modal/basket-items-modal.js */ "./template-parts/components/modals/basket-items-modal/basket-items-modal.js");
 /* harmony import */ var _components_checkout_checkout_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./components/checkout/checkout.js */ "./template-parts/components/checkout/checkout.js");
+/* harmony import */ var _components_search_search_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./components/search/search.js */ "./template-parts/components/search/search.js");
+
 
 
 

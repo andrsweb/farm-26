@@ -35,6 +35,7 @@ $open_basket_class = 0 >= $cart_items_count ? 'open-empty-basket' : 'open-full-b
                 <a class="header-number" href="tel:<?php echo trim($phone); ?>" title="<?php _e('Позвонить'); ?>">
                     <?php echo esc_attr($phone); ?>
                 </a>
+                <?php get_template_part('template-parts/components/search/search'); ?>
             </div>
             <div class="header-right">
                 <p>

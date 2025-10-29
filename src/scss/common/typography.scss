@@ -35,6 +35,11 @@ h1,
 	font-weight: v.$fw-medium;
 	text-transform: uppercase;
 
+    span {
+      text-transform: capitalize;
+      margin-left: 20px;
+    }
+
 	@include m.media(xl) {
 		font-size: 64px;
 		letter-spacing: -0.64px;
