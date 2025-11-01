@@ -7,6 +7,7 @@ document.addEventListener('DOMContentLoaded', () => {
     initAcceptPublicOffer();
     initSubmitCheckoutForm();
     initValidationErrors();
+    console.log('loaded checkout.js');
 });
 
 const initShippingZones = () => {
@@ -61,7 +62,7 @@ const initAcceptPublicOffer = () => {
     if (!acceptPublicOfferCheckbox) return;
 
     acceptPublicOfferCheckbox.addEventListener('change', (e) => {
-        const submitButton = document.querySelector('button[type="submit"]');
+        const submitButton = document.querySelector('form[name="checkout"] button[type="submit"]');
         if (!submitButton) return;
 
         submitButton.disabled = !e.target.checked;

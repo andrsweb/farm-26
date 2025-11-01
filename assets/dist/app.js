@@ -349,6 +349,7 @@ document.addEventListener('DOMContentLoaded', function () {
   initAcceptPublicOffer();
   initSubmitCheckoutForm();
   initValidationErrors();
+  console.log('loaded checkout.js');
 });
 var initShippingZones = function initShippingZones() {
   var shippingSelect = document.getElementById('shipping_zone');
@@ -398,7 +399,7 @@ var initAcceptPublicOffer = function initAcceptPublicOffer() {
   var acceptPublicOfferCheckbox = document.getElementById('accept_public_offer');
   if (!acceptPublicOfferCheckbox) return;
   acceptPublicOfferCheckbox.addEventListener('change', function (e) {
-    var submitButton = document.querySelector('button[type="submit"]');
+    var submitButton = document.querySelector('form[name="checkout"] button[type="submit"]');
     if (!submitButton) return;
     submitButton.disabled = !e.target.checked;
   });

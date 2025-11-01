@@ -20,7 +20,7 @@ if (empty($categories)) {
 $logo_text = get_bloginfo('name');
 $logo_url = get_field('logo_url', 'option') ?? THEME_URL . '/assets/img/logo-with-text.png';
 $is_home = is_front_page() || is_home();
-$is_shop_page = is_page(wc_get_page_id('shop'));
+$is_shop_page = is_page(wc_get_page_id('shop')) || is_search();
 ?>
 <aside class="category-aside">
     <div class="category-aside-inner" data-simplebar>
