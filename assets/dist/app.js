@@ -818,6 +818,7 @@ document.addEventListener('DOMContentLoaded', function () {
   initSearchBar();
 });
 var initSearchBar = function initSearchBar() {
+  var searchBar = document.querySelector('.search-bar');
   var searchInput = document.getElementById('search-bar-input');
   var searchLabel = document.querySelector('.search-bar-label');
   if (!searchInput || !searchLabel) return;
@@ -833,18 +834,15 @@ var initSearchBar = function initSearchBar() {
     if (e.target.classList.contains('search-bar-clear')) {
       searchInput.value = '';
       searchLabel.classList.remove('show-clear');
+      searchBar.classList.remove('active');
       searchInput.dispatchEvent(new Event('change', {
         bubbles: true
       }));
     }
+    if (e.target.classList.contains('mobile-search')) {
+      searchBar.classList.toggle('active');
+    }
   });
-  return;
-  // removed by dead control flow
-
-  // removed by dead control flow
-
-  // removed by dead control flow
-
 };
 
 /***/ }),

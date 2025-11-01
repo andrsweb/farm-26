@@ -45,6 +45,8 @@ $open_basket_class = 0 >= $cart_items_count ? 'open-empty-basket' : 'open-full-b
                     <time datetime="<?php echo esc_attr($working_hours_end); ?>"><?php echo esc_attr($working_hours_end); ?></time>
                 </p>
                 <div class="header-right-actions">
+                    <?php get_template_part('template-parts/components/search/mobile-search'); ?>
+
                     <a href="tel:<?php echo trim($phone); ?>" title="<?php _e('Позвонить'); ?>">
                         <img src="<?php echo esc_attr(THEME_URL); ?>/assets/img/phone.svg" width="18" height="18"
                              alt="<?php echo $phone; ?>">

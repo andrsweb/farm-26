@@ -5,6 +5,7 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 const initSearchBar = () => {
+    const searchBar = document.querySelector('.search-bar');
     const searchInput = document.getElementById('search-bar-input');
     const searchLabel = document.querySelector('.search-bar-label');
 
@@ -25,51 +26,13 @@ const initSearchBar = () => {
         if (e.target.classList.contains('search-bar-clear')) {
             searchInput.value = '';
             searchLabel.classList.remove('show-clear');
+            searchBar.classList.remove('active');
             searchInput.dispatchEvent(new Event('change', {bubbles: true}));
         }
-    });
 
-    return;
-
-    searchInput.addEventListener('change', (e) => {
-        const selectedOption = e.target.selectedOptions[0];
-        if (!selectedOption) return;
-
-        const fieldset = document.getElementById('shipping_methods_fieldset');
-        const title = fieldset.querySelector('legend');
-        const labels = fieldset.querySelectorAll('label');
-        const preloader = document.createElement('div');
-        preloader.className = 'preloader';
-
-        labels.forEach(label => label.remove());
-
-        fieldset.appendChild(preloader);
-
-        fetch(ajax_object.ajax_url, {
-            method: 'POST',
-            credentials: 'same-origin',
-            headers: {'Content-Type': 'application/x-www-form-urlencoded'},
-            body: new URLSearchParams({
-                action: 'get_city_shipping_methods',
-                shipping_zone_id: selectedOption.value,
-            })
-        })
-            .then(res => res.json())
-            .then(data => {
-                if (data.success) {
-                    preloader.remove();
-                    fieldset.insertAdjacentHTML('beforeend', data.data.html);
-                    updateTotalCost();
-                }
-            });
-
-    });
-
-    shippingSelect.dispatchEvent(new Event('change', {bubbles: true}));
-
-    document.addEventListener('change', (e) => {
-        if (e.target.closest('input[name="shipping_method"]')) {
-            updateTotalCost();
+        if (e.target.classList.contains('mobile-search')) {
+            searchBar.classList.toggle('active');
         }
+
     });
 }
